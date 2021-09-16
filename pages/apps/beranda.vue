@@ -4,7 +4,7 @@
 		<v-container>
 			<Head
 				title="Tiketing"
-				subtitle="Overview tiket bulan ini - January"
+				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
 				<v-btn 
 					small 
@@ -16,7 +16,50 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			<v-row v-if="isFetching" class="mb-8">
+			<v-stepper alt-labels class="mb-8">
+				<v-stepper-header>
+					<v-stepper-step step="1">
+						Import SKPK
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="2">
+						Buat Tiket
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="3">
+						Approval Ah
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="4">
+						Approval Adh
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="5">
+						Approval BM
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="6">
+						Approval FH
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="7">
+						Verifikasi Driver
+					</v-stepper-step>
+
+					<v-divider></v-divider>
+					<v-stepper-step step="8">
+						Verifikasi FS
+					</v-stepper-step>
+
+				</v-stepper-header>
+			</v-stepper>
+			<!-- <v-row v-if="isFetching" class="mb-8">
 				<v-col sm="12" md="3" cols="12">
 					<v-card>
 						<v-skeleton-loader
@@ -274,7 +317,7 @@
 					</v-card>
 				</v-col>
 				
-			</v-row>
+			</v-row> -->
 			
 		</v-container>
 		</div>

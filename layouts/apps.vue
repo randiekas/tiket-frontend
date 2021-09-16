@@ -85,9 +85,15 @@ export default {
 			apps:{
 				'sales': [
 					{
-						"ikon": "mdi-map-outline",
-						"nama":"Data Tiket",
-						"deskripsi":"Kelola lengkap data tiket",
+						"ikon": "mdi-table-large",
+						"nama":"Data SKPK",
+						"deskripsi":"Kelola lengkap data SKPK",
+						"link":"/apps/skpk"
+					},
+					{
+						"ikon": "mdi-car-arrow-left",
+						"nama":"Tiket SKPK",
+						"deskripsi":"Kelola lengkap tiket SKPK",
 						"link":"/apps/tiket"
 					},
 				],
