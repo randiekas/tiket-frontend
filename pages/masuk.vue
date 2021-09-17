@@ -23,12 +23,12 @@ export default {
 		const token 		= `Bearer ${urlParams.get('access_token')}`
 		const tipe			= $auth.$storage.getUniversal("loginType")
         $auth.$storage.setUniversal("_token.google", token)
-        
-		if(tipe==="driver"){
-			window.location.href='/apps/driver'
-		}else{
-			window.location.href='/apps/beranda'
-		}
+        window.location.href='/apps/'+tipe
+		// if(tipe==="driver"){
+		// 	window.location.href='/apps/driver'
+		// }else{
+		// 	window.location.href='/apps/beranda'
+		// }
         
 
 		// await $axios.$post(`v1/akun/masukGoogle`,{
