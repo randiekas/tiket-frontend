@@ -19,16 +19,16 @@
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
 					<v-stepper-step step="1">
-						<v-btn to="/apps/sales" color="primary" small>
+						
 							Import SKPK
-						</v-btn>
+						
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
-						<v-btn to="/apps/sales/tiket" color="primary" small>
+						
 							Data/buat tiket
-						</v-btn>
+						
 						
 					</v-stepper-step>
 
@@ -39,17 +39,23 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="4">
-						Approval Adh
+						
+							Approval Adh
+						
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="5">
+						
 						Approval BM
+						
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="6">
-						Approval FH
+						<v-btn to="/apps/fh" color="primary" small>
+							Approval FH
+						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -80,20 +86,8 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Data SKPK
+							Data tiket yang perlu di approval
 							<v-spacer/>
-							<v-btn small class="mr-2">
-								<v-icon left>
-									mdi-microsoft-excel
-								</v-icon>
-								Download Format Import
-							</v-btn>
-							<v-btn small color="primary">
-								<v-icon left>
-									mdi-upload
-								</v-icon>
-								Import Excell
-							</v-btn>
 						</v-card-title>
 						<v-divider class="mt-4"/>
 						<v-simple-table dense style="width:1500px;">
@@ -127,11 +121,8 @@
 									<td>30/04/2022</td>
 									<td>CICI</td>
 									<td>
-										<v-btn small icon>
-											<v-icon small>mdi-pencil</v-icon>
-										</v-btn>
-										<v-btn small icon>
-											<v-icon small>mdi-delete</v-icon>
+										<v-btn small color="success">
+											Approve
 										</v-btn>
 									</td>
 								</tr>
