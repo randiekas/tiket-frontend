@@ -3,8 +3,8 @@
 		<div class="primary pb-16">
 		<v-container>
 			<Head
-				title="Admin"
-				subtitle="Kelola data user"
+				title="Tiketing"
+				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
 				<v-btn 
 					small 
@@ -16,11 +16,12 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
+			
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
 			<v-row class="mt-2 mt-n8">
-				<v-col v-if="isFetching" sm="12" md="6" cols="12">
+				<v-col v-if="isFetching" sm="12" md="12" cols="12">
 					<v-card>
 						<v-skeleton-loader
 							class="mx-auto"
@@ -31,62 +32,50 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Kelola data user
+							Data yang belum setting driver
 							<v-spacer/>
-							<v-btn small color="primary">
-								<v-icon left>
-									mdi-account-plus
-								</v-icon>
-								Tambah akun
-							</v-btn>
 						</v-card-title>
 						<v-divider class="mt-4"/>
-						<v-simple-table dense>
+						<v-simple-table dense style="width:1500px;">
 							<thead>
 								<tr>
-									<th width="10%">No</th>
-									<th width="70%">Email</th>
-									<th width="10%">Tipe User</th>
+									<th width="10px">No</th>
+									<th>Nomor Notif</th>
+									<th>Nama Customer</th>
+									<th>Nopol</th>
+									<th>PIC / User</th>									
+									<th>Telepon</th>
+									
+									<th>Kontrak Berakhir</th>
+                                    <th>Jadwal Penarikan</th>
+                                    <th>Alasan Penarikan</th>
+									<th>BCO</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>randiekas@gmail.com</td>
-									<td>admin</td>
+								<tr 
+									v-for="(item, index) in 10"
+									:key="index">
+									<td>{{index+1}}</td>
 									<td>
-										<v-btn small icon>
-											<v-icon small>mdi-pencil</v-icon>
-										</v-btn>
-										<v-btn small icon>
-											<v-icon small>mdi-delete</v-icon>
-										</v-btn>
+										<v-chip small dark color="green">
+											810000210343
+										</v-chip>
 									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>agenglestari@gmail.com</td>
-									<td>sales</td>
+									<td>IBU FIRA</td>
+									<td>B1541UIZ</td>
+                                    <td>C2MFG INDONESIA</td>
+									<td>081298179643</td>
+									<td>30/04/2022</td>
+									<td>30/04/2022</td>
+                                    <td>Kontrak Berakhir</td>
+									<td>CICI</td>
 									<td>
-										<v-btn small icon>
-											<v-icon small>mdi-pencil</v-icon>
-										</v-btn>
-										<v-btn small icon>
-											<v-icon small>mdi-delete</v-icon>
-										</v-btn>
-									</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>mujiono@gmail.com</td>
-									<td>sales</td>
-									<td>
-										<v-btn small icon>
-											<v-icon small>mdi-pencil</v-icon>
-										</v-btn>
-										<v-btn small icon>
-											<v-icon small>mdi-delete</v-icon>
+										<v-btn 
+											v-on:click="dialog=true"
+											small primary color="primary">
+											Detil
 										</v-btn>
 									</td>
 								</tr>
@@ -94,8 +83,424 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
+				
 			</v-row>
 		</v-container>
+		
+		<v-dialog
+            v-model="dialog"
+            persistent
+            max-width="600px"
+            >
+            <v-card>
+                <v-card-title>
+                <span class="text-h5">Detil Tiket</span>
+                </v-card-title>
+                <v-card-text>
+                <v-container>
+                    <v-text-field
+                        label="NOMOR CUSTOMER (CMD)"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						hint="Enter untuk mengambil data"
+						persistent-hint
+                        />
+					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="B 154 IUX - Toyota Avanza"/>
+						<v-radio
+							label="B 1234 XYZ - Daihatsu Xenia"/>
+					</v-radio-group>
+					<v-text-field
+                        label="NOMOR KONTRAK "
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+                        />
+					<v-text-field
+                        label="Tanggal Akhir Kontrak "
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+						append-icon="mdi-calendar"
+                        />
+
+                    <v-text-field
+                        label="PIC / User"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Jabatan / Bagian"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+						type="number"
+                        label="No Telepon / hp"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Alamat penarikan kendaraan"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+                    
+					<p>Jadwal Penarikan</p>
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<p class="mb-0">Alasan Penarikan</p>
+					<v-radio-group class="mt-0">
+						<v-radio
+							label="Kontrak selesai"/>
+						<v-radio
+							label="AR Bermasalah"/>
+						<v-radio
+							label="Early Termination"/>
+						<v-radio
+							label="Pass Maintenance Check"/>
+						<v-radio
+							label="Late unit return"/>
+						<v-radio
+							label="GT"/>
+					</v-radio-group>
+					<v-text-field
+                        label="Lain-lain"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+                    <p>Plan penarikan team pool</p>
+					<v-text-field
+                        label="Nama Driver"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+                </v-container>
+                </v-card-text>
+
+				<v-card-title>Detail Penarikan</v-card-title>
+				<v-card-subtitle>Diisi oleh Driver</v-card-subtitle>
+				<v-card-text>
+                    <v-row>
+                        <v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Nama Pengemudi"
+                                value="Randi Eka Setiawan"
+                                hide-details=""/>
+                        </v-col>
+                        <v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Telepon Pemesan"
+                                value="082126833236"
+                                hide-details=""/>
+                        </v-col>
+                        <v-col md="12">
+                            <v-textarea
+                                dense
+                                outlined
+                                label="Alamat Pengemudi"
+                                value="Jl. Ciuyah No.50, Padaasih, Kec. Cisarua, Kabupaten Bandung Barat, Jawa Barat 40551"
+                                hide-details=""/>
+                        </v-col>
+                        
+                    </v-row>
+                    <p class="text-overline mt-4">
+                        Detail Kejadian
+                    </p>
+					<v-row>
+						<v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Tanggal kejadian"
+                                type="date"
+                                value="2021-06-16"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Lokasi Kejadian"
+                                value="lampumerah al azhar..."
+								hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+                            <v-textarea
+                                dense
+                                outlined
+                                label="Uraian Kejadian"
+                                value="Mobil depan di lampu merah ngerem mendadak Posisi lampu hijau,mobil depan ragu ragu buat melewati Lampu merah ,ingin melewati mobil depan tibatiba mobil depan ngerem mendadak"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+							<p class="mb-0">
+								Bagian komponen yang rusak / hilang
+							</p>
+						</v-col>
+						<v-col md="6">
+							<v-checkbox
+								dense
+								hide-details=""
+								label="Komponen 1"/>
+							<v-checkbox
+								dense
+								hide-details=""
+								label="Komponen 2"/>
+							<v-checkbox
+								dense
+								hide-details=""
+								label="Komponen 3"/>
+						</v-col>
+						<v-col md="6">
+							<v-checkbox
+								dense	
+								hide-details=""
+								label="Komponen 4"/>
+							<v-checkbox
+								dense
+								hide-details=""
+								label="Komponen 5"/>
+						</v-col>
+						<v-col md="12">
+							<v-text-field
+								class="mt-4"
+								dense
+								outlined
+								label="Bagian komponen yang rusak/hilang lainnya"
+								value="lampu depan pecah"
+								hide-details="lampumerah al azhar..."
+								append-icon="mdi-delete-circle"/>
+						</v-col>
+						<v-col md="12" class="text-right">
+							<v-btn small>
+								Tambah
+							</v-btn>
+						</v-col>
+					</v-row>
+	
+					<p class="text-overline mt-4">
+                        Own Risk
+                    </p>
+
+					<v-row>
+						<v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Jumlah BAK X OR"
+                                prefix="Rp. "
+                                value="10000"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+							<v-text-field
+                                dense
+                                outlined
+                                label="Rencana Tanggal Pembayaran"
+								type="date"
+                                value="2021-06-06"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Pembebanan">
+								
+								<v-radio
+									label="Pemesan"/>
+								<v-radio
+									label="Perusahaan"/>
+								
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="6">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Mekanisme Pembayaran">
+								
+								<v-radio
+									label="Tunai / Kasir"/>
+								<v-radio
+									label="Billing/Transfer"/>
+								
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="12">
+							<v-textarea
+								dense
+								outlined
+								label="Catatan"
+								hide-details=""/>
+						</v-col>
+
+					</v-row>
+
+					<p class="text-overline mt-4">
+                        Lampiran
+                    </p>
+
+					<v-file-input
+						dense
+						outlined
+						label="Foto SIM"
+						value="1202144183"/>
+					<v-file-input
+						dense
+						outlined
+						label="Foto Form BAK"
+						value="1202144183"/>
+					<v-file-input
+						dense
+						outlined
+						label="Foto Form Konfirmasi OR"
+						value="1202144183"/>
+					<v-file-input
+						dense
+						outlined
+						label="Foto Form Checklist"
+						value="1202144183"
+						hide-details=""/>
+                </v-card-text>
+
+
+				<v-card-title>Verifikasi Catatan</v-card-title>
+				<v-card-subtitle>Diisi oleh Fleet</v-card-subtitle>
+				<v-card-text>
+					<p class="mb-0">Status Dokumen</p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="Dokumen Lengkap"/>
+						<v-radio
+							label="Dokumen Tidak Lengkap"/>
+					</v-radio-group>
+					<v-row>
+						<v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="No. Claim SIS"
+                                value="1202144183"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+                            <v-file-input
+                                dense
+                                outlined
+                                label="Lampiran Bukti Pembayaran"
+                                value="1202144183"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+							<v-textarea
+								dense
+								outlined
+								label="Catatan"
+								hide-details=""/>
+						</v-col>
+					</v-row>
+				</v-card-text>
+
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="dialog = false"
+                >
+                    Close
+                </v-btn>
+                <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="dialog = false"
+                >
+                    Validasi Complete
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+            </v-dialog>
+		
 	</div>
 </template>
 <script>
@@ -104,6 +509,7 @@ export default {
 	props: ['apps', 'tipe', 'handelKeluar'],
 	async asyncData({ }) {
 		return {
+			dialog:false,
 			isFetching:false,
             dasbor: {
                 "lahir": 0,
@@ -123,7 +529,7 @@ export default {
                 "cerai_mati": 0,
                 "dusun": 0,
                 "desa": 0,
-                "ganda": []
+                "ganda": [],
             }
 
 		}
@@ -197,3 +603,8 @@ export default {
 	}
 }
 </script>
+<style>
+table{
+	width: 1470px!important;
+}
+</style>

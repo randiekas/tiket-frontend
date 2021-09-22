@@ -3,8 +3,8 @@
 		<div class="primary pb-16">
 		<v-container>
 			<Head
-				title="Tiketing"
-				subtitle="Seluruh Alur proses SKPK"
+				title="Admin"
+				subtitle="Kelola data user"
 				color="white--text">
 				<v-btn 
 					small 
@@ -16,60 +16,11 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			<v-stepper alt-labels class="mb-8">
-				<v-stepper-header>
-					<v-stepper-step step="1">
-						<v-btn to="/apps/sales" color="primary" small>
-							Import SKPK
-						</v-btn>
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="2">
-						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Data/buat tiket
-						</v-btn>
-						
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="3">
-						Approval Ah
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval Adh
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval BM
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="6">
-						Approval FDH
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi Driver
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="8">
-						Verifikasi FS
-					</v-stepper-step>
-
-				</v-stepper-header>
-			</v-stepper>
-			
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
 			<v-row class="mt-2 mt-n8">
-				<v-col v-if="isFetching" sm="12" md="12" cols="12">
+				<v-col v-if="isFetching" sm="12" md="6" cols="12">
 					<v-card>
 						<v-skeleton-loader
 							class="mx-auto"
@@ -80,52 +31,30 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Data SKPK
+							Kelola data user
 							<v-spacer/>
-							<v-btn small class="mr-2">
-								<v-icon left>
-									mdi-microsoft-excel
-								</v-icon>
-								Download Format Import
-							</v-btn>
 							<v-btn small color="primary">
 								<v-icon left>
-									mdi-upload
+									mdi-account-plus
 								</v-icon>
-								Import Excell
+								Tambah akun
 							</v-btn>
 						</v-card-title>
 						<v-divider class="mt-4"/>
-						<v-simple-table dense style="width:1500px;">
+						<v-simple-table dense>
 							<thead>
 								<tr>
-									<th width="10px">No</th>
-									<th width="150px">Nomor Polisi</th>
-									<th>Tipe Kendaraan</th>
-									<th>No. Notif</th>
-									<th>No. Customer</th>
-									<th>Nama Customer</th>
-									<th>Nomor Kontrak</th>
-									<th>Mulai</th>
-									<th>Selesai</th>
-									<th>BCO</th>
+									<th width="10%">No</th>
+									<th width="70%">Email</th>
+									<th width="10%">Tipe User</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
-									v-for="(item, index) in 10"
-									:key="index">
-									<td>{{index+1}}</td>
-									<td>D8815FK</td>
-									<td>COLT-D FE 71 110PS 4B 4.0 MT D ABX 2019</td>
-									<td>810000202541</td>
-									<td>21099256</td>
-									<td>ANDIARTA MUZIZAT</td>
-									<td>2100101924</td>
-									<td>01/05/2021</td>
-									<td>30/04/2022</td>
-									<td>CICI</td>
+								<tr>
+									<td>1</td>
+									<td>randiekas@gmail.com</td>
+									<td>admin</td>
 									<td>
 										<v-btn small icon>
 											<v-icon small>mdi-pencil</v-icon>
@@ -135,12 +64,36 @@
 										</v-btn>
 									</td>
 								</tr>
-								 
+								<tr>
+									<td>2</td>
+									<td>agenglestari@gmail.com</td>
+									<td>sales</td>
+									<td>
+										<v-btn small icon>
+											<v-icon small>mdi-pencil</v-icon>
+										</v-btn>
+										<v-btn small icon>
+											<v-icon small>mdi-delete</v-icon>
+										</v-btn>
+									</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>mujiono@gmail.com</td>
+									<td>sales</td>
+									<td>
+										<v-btn small icon>
+											<v-icon small>mdi-pencil</v-icon>
+										</v-btn>
+										<v-btn small icon>
+											<v-icon small>mdi-delete</v-icon>
+										</v-btn>
+									</td>
+								</tr>
 							</tbody>
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
 			</v-row>
 		</v-container>
 	</div>
@@ -244,8 +197,3 @@ export default {
 	}
 }
 </script>
-<style>
-table{
-	width: 1470px!important;
-}
-</style>

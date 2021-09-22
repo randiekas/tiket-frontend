@@ -53,8 +53,8 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="6">
-						<v-btn to="/apps/fh" color="primary" small>
-							Approval FH
+						<v-btn to="/apps/fdh" color="primary" small>
+							Approval FDH
 						</v-btn>
 					</v-stepper-step>
 
@@ -94,14 +94,15 @@
 							<thead>
 								<tr>
 									<th width="10px">No</th>
-									<th width="150px">Nomor Polisi</th>
-									<th>Tipe Kendaraan</th>
-									<th>No. Notif</th>
-									<th>No. Customer</th>
+									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
-									<th>Nomor Kontrak</th>
-									<th>Mulai</th>
-									<th>Selesai</th>
+									<th>Nopol</th>
+									<th>PIC / User</th>									
+									<th>Telepon</th>
+									
+									<th>Kontrak Berakhir</th>
+                                    <th>Jadwal Penarikan</th>
+                                    <th>Alasan Penarikan</th>
 									<th>BCO</th>
 									<th></th>
 								</tr>
@@ -111,22 +112,28 @@
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
-									<td>D8815FK</td>
-									<td>COLT-D FE 71 110PS 4B 4.0 MT D ABX 2019</td>
-									<td>810000202541</td>
-									<td>21099256</td>
-									<td>ANDIARTA MUZIZAT</td>
-									<td>2100101924</td>
-									<td>01/05/2021</td>
+									<td>
+										<v-chip small dark color="green">
+											810000210343
+										</v-chip>
+									</td>
+									<td>IBU FIRA</td>
+									<td>B1541UIZ</td>
+                                    <td>C2MFG INDONESIA</td>
+									<td>081298179643</td>
 									<td>30/04/2022</td>
+									<td>30/04/2022</td>
+                                    <td>Kontrak Berakhir</td>
 									<td>CICI</td>
 									<td>
-										<v-btn small color="success">
+										<v-btn small primary color="primary">
+											Detil
+										</v-btn>
+										<v-btn small primary dark color="green">
 											Approve
 										</v-btn>
 									</td>
 								</tr>
-								 
 							</tbody>
 						</v-simple-table>
 					</v-card>

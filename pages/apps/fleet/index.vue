@@ -18,14 +18,8 @@
 			</Head>
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
-					<v-stepper-step step="1">
-						
-							Import SKPK
-						
-					</v-stepper-step>
 
-					<v-divider></v-divider>
-					<v-stepper-step step="2">
+					<v-stepper-step step="1">
 						
 							Data/buat tiket
 						
@@ -33,23 +27,30 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="3">
+					<v-stepper-step step="2">
 						Approval Ah
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
+					<v-stepper-step step="3">
 						Approval Adh
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
+					<v-stepper-step step="4">
 						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
+					<v-stepper-step step="5">
+						Approval FDH
+					</v-stepper-step>
+
+					<v-divider></v-divider>
 					<v-stepper-step step="6">
-						Approval FH
+						<v-btn to="/apps/fleet" color="primary" small>
+							Dispatch Driver
+						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -61,7 +62,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="8">
-						<v-btn to="/apps/fleet" color="primary" small>
+						<v-btn to="/apps/fleet/verifikasi" color="primary" small>
 							Verifikasi FS
 						</v-btn>
 					</v-stepper-step>
@@ -84,7 +85,7 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Data yang harus kamu verifikasi dokumen
+							Data yang harus kamu verifikasi
 							<v-spacer/>
 						</v-card-title>
 						<v-divider class="mt-4"/>
@@ -92,20 +93,16 @@
 							<thead>
 								<tr>
 									<th width="10px">No</th>
-									<th width="150px">CMD</th>
+									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
-									<th>PIC / User</th>
-									<th>Jabatan / Bagian</th>
+									<th>Nopol</th>
+									<th>PIC / User</th>									
 									<th>Telepon</th>
 									
-									<th>Nomor Kontrak</th>
-									<th>Berakhir</th>
-									<th>BCO</th>
-                                    <th>Nomor Polisi</th>
-                                    <th>Nomor Notif</th>
-                                    <th>Nama Driver</th>
+									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
+									<th>BCO</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -114,31 +111,27 @@
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
-									<td>21081359</td>
+									<td>
+										<v-chip small dark color="green">
+											810000210343
+										</v-chip>
+									</td>
 									<td>IBU FIRA</td>
-                                    <td>C2MFG INDONESIA</td>
-									<td>SEKRETARIS</td>
-									<td>081298179643</td>
-									
-									<td>2200050707</td>
-									<td>30/04/2022</td>
-									<td>CICI</td>
 									<td>B1541UIZ</td>
-									<td>810000210343</td>
-									<td>Agus</td>
-                                    <td>30/04/2022</td>
+                                    <td>C2MFG INDONESIA</td>
+									<td>081298179643</td>
+									<td>30/04/2022</td>
+									<td>30/04/2022</td>
                                     <td>Kontrak Berakhir</td>
-                                    <td></td>
+									<td>CICI</td>
 									<td>
 										<v-btn 
-											small 
-											color="primary"
-											v-on:click="dialog=true">
-											ISI FORM
+											v-on:click="dialog=true"
+											small primary color="primary">
+											Detil
 										</v-btn>
 									</td>
 								</tr>
-								 
 							</tbody>
 						</v-simple-table>
 					</v-card>
@@ -146,42 +139,168 @@
 				
 			</v-row>
 		</v-container>
-		 <v-dialog
+		
+		<v-dialog
             v-model="dialog"
             persistent
             max-width="600px"
             >
-            <v-card class="mt-6">
-                <v-card-title>Verifikasi Catatan</v-card-title>
-				<v-card-subtitle>Diisi oleh Fleet</v-card-subtitle>
-				<v-card-text>
-					<v-row>
-						<v-col md="12">
-                            <v-text-field
-                                dense
-                                outlined
-                                label="No. Claim SIS"
-                                value="1202144183"
-                                hide-details=""/>
-                        </v-col>
-						<v-col md="12">
-                            <v-file-input
-                                dense
-                                outlined
-                                label="Lampiran Bukti Pembayaran"
-                                value="1202144183"
-                                hide-details=""/>
-                        </v-col>
-						<v-col md="12">
-							<v-textarea
-								dense
-								outlined
-								label="Catatan"
-								hide-details=""/>
-						</v-col>
-					</v-row>
-				</v-card-text>
-				<v-card-actions>
+            <v-card>
+                <v-card-title>
+                <span class="text-h5">Detil Tiket</span>
+                </v-card-title>
+                <v-card-text>
+                <v-container>
+                    <v-text-field
+                        label="NOMOR CUSTOMER (CMD)"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						hint="Enter untuk mengambil data"
+						persistent-hint
+                        />
+					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="B 154 IUX - Toyota Avanza"/>
+						<v-radio
+							label="B 1234 XYZ - Daihatsu Xenia"/>
+					</v-radio-group>
+					<v-text-field
+                        label="NOMOR KONTRAK "
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+                        />
+					<v-text-field
+                        label="Tanggal Akhir Kontrak "
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+						append-icon="mdi-calendar"
+                        />
+
+                    <v-text-field
+                        label="PIC / User"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Jabatan / Bagian"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+						type="number"
+                        label="No Telepon / hp"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Alamat penarikan kendaraan"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+                    
+					<p>Jadwal Penarikan</p>
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<p class="mb-0">Alasan Penarikan</p>
+					<v-radio-group class="mt-0">
+						<v-radio
+							label="Kontrak selesai"/>
+						<v-radio
+							label="AR Bermasalah"/>
+						<v-radio
+							label="Early Termination"/>
+						<v-radio
+							label="Pass Maintenance Check"/>
+						<v-radio
+							label="Late unit return"/>
+						<v-radio
+							label="GT"/>
+					</v-radio-group>
+					<v-text-field
+                        label="Lain-lain"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+                    <p>Plan penarikan team pool</p>
+					<v-text-field
+                        label="Nama Driver"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+                </v-container>
+                <small>*indicates required field</small>
+                </v-card-text>
+                <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
                     color="blue darken-1"
@@ -198,8 +317,9 @@
                     Save
                 </v-btn>
                 </v-card-actions>
-			</v-card>
+            </v-card>
             </v-dialog>
+		
 	</div>
 </template>
 <script>

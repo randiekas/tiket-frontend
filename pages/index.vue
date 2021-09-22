@@ -54,7 +54,7 @@ export default {
 			this.$router.push(`/apps/beranda`) 
 		}
 		return {
-			role: ['admin', 'sales', 'ah', 'adh', 'bm', 'fh', 'driver', 'fleet'],
+			role: ['akun', 'sales', 'ah', 'adh', 'bm', 'fdh', 'fleet', 'driver', 'admin'],
 			roleDipilih: 'sales',
 		}
 	},

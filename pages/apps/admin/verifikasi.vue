@@ -18,14 +18,8 @@
 			</Head>
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
-					<v-stepper-step step="1">
-						
-							Import SKPK
-						
-					</v-stepper-step>
 
-					<v-divider></v-divider>
-					<v-stepper-step step="2">
+					<v-stepper-step step="1">
 						
 							Data/buat tiket
 						
@@ -33,35 +27,44 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="3">
+					<v-stepper-step step="2">
 						Approval Ah
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
+					<v-stepper-step step="3">
 						Approval Adh
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
+					<v-stepper-step step="4">
 						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						<v-btn to="/apps/driver" color="primary" small>
-							Verifikasi Driver
+					<v-stepper-step step="6">
+						<v-btn to="/apps/fleet" color="primary" small>
+							Dispatch Driver
 						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
+					<v-stepper-step step="7">
+						
+							Verifikasi Driver
+						
+					</v-stepper-step>
+
+					<v-divider></v-divider>
 					<v-stepper-step step="8">
-						Verifikasi FS
+						<v-btn to="/apps/fleet/verifikasi" color="primary" small>
+							Verifikasi FS
+						</v-btn>
 					</v-stepper-step>
 
 				</v-stepper-header>
@@ -82,7 +85,7 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Data yang harus kamu isi BAK & OR
+							Data yang belum setting driver
 							<v-spacer/>
 						</v-card-title>
 						<v-divider class="mt-4"/>
@@ -136,13 +139,169 @@
 				
 			</v-row>
 		</v-container>
-		 <v-dialog
+		
+		<v-dialog
             v-model="dialog"
             persistent
             max-width="600px"
             >
-            <v-card class="mt-6">
-                <v-card-title>Detail Penarikan</v-card-title>
+            <v-card>
+                <v-card-title>
+                <span class="text-h5">Detil Tiket</span>
+                </v-card-title>
+                <v-card-text>
+                <v-container>
+                    <v-text-field
+                        label="NOMOR CUSTOMER (CMD)"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						hint="Enter untuk mengambil data"
+						persistent-hint
+                        />
+					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="B 154 IUX - Toyota Avanza"/>
+						<v-radio
+							label="B 1234 XYZ - Daihatsu Xenia"/>
+					</v-radio-group>
+					<v-text-field
+                        label="NOMOR KONTRAK "
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+                        />
+					<v-text-field
+                        label="Tanggal Akhir Kontrak "
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+						append-icon="mdi-calendar"
+                        />
+
+                    <v-text-field
+                        label="PIC / User"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Jabatan / Bagian"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+						type="number"
+                        label="No Telepon / hp"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<v-text-field
+                        label="Alamat penarikan kendaraan"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+                    
+					<p>Jadwal Penarikan</p>
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+					<p class="mb-0">Alasan Penarikan</p>
+					<v-radio-group class="mt-0">
+						<v-radio
+							label="Kontrak selesai"/>
+						<v-radio
+							label="AR Bermasalah"/>
+						<v-radio
+							label="Early Termination"/>
+						<v-radio
+							label="Pass Maintenance Check"/>
+						<v-radio
+							label="Late unit return"/>
+						<v-radio
+							label="GT"/>
+					</v-radio-group>
+					<v-text-field
+                        label="Lain-lain"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+                    <p>Plan penarikan team pool</p>
+					<v-text-field
+                        label="Nama Driver"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Tanggal Penarikan"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan"
+						type="time"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+                </v-container>
+                </v-card-text>
+
+				<v-card-title>Detail Penarikan</v-card-title>
 				<v-card-subtitle>Diisi oleh Driver</v-card-subtitle>
 				<v-card-text>
                     <v-row>
@@ -334,7 +493,48 @@
 						value="1202144183"
 						hide-details=""/>
                 </v-card-text>
-				<v-card-actions>
+
+
+				<v-card-title>Verifikasi Catatan</v-card-title>
+				<v-card-subtitle>Diisi oleh Fleet</v-card-subtitle>
+				<v-card-text>
+					<p class="mb-0">Status Dokumen</p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="Dokumen Lengkap"/>
+						<v-radio
+							label="Dokumen Tidak Lengkap"/>
+					</v-radio-group>
+					<v-row>
+						<v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="No. Claim SIS"
+                                value="1202144183"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+                            <v-file-input
+                                dense
+                                outlined
+                                label="Lampiran Bukti Pembayaran"
+                                value="1202144183"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="12">
+							<v-textarea
+								dense
+								outlined
+								label="Catatan"
+								hide-details=""/>
+						</v-col>
+					</v-row>
+				</v-card-text>
+
+                <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
                     color="blue darken-1"
@@ -351,8 +551,9 @@
                     Save
                 </v-btn>
                 </v-card-actions>
-			</v-card>
+            </v-card>
             </v-dialog>
+		
 	</div>
 </template>
 <script>

@@ -49,7 +49,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="6">
-						Approval FH
+						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
