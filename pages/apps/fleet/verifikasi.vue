@@ -33,7 +33,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						Approval Adh
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -503,19 +503,11 @@
 						class="mt-0"
 						v-model="radioGroup">
 						<v-radio
-							label="Dokumen Lengkap"/>
+							label="Dokumen Sesuai dan lengkap"/>
 						<v-radio
 							label="Dokumen Tidak Lengkap"/>
 					</v-radio-group>
 					<v-row>
-						<v-col md="12">
-                            <v-text-field
-                                dense
-                                outlined
-                                label="No. Claim SIS"
-                                value="1202144183"
-                                hide-details=""/>
-                        </v-col>
 						<v-col md="12">
                             <v-file-input
                                 dense
@@ -524,6 +516,16 @@
                                 value="1202144183"
                                 hide-details=""/>
                         </v-col>
+
+						<v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="No. Claim SIS"
+                                value="1202144183"
+                                hide-details=""/>
+                        </v-col>
+						
 						<v-col md="12">
 							<v-textarea
 								dense
@@ -532,15 +534,24 @@
 								hide-details=""/>
 						</v-col>
 					</v-row>
-				</v-card-text>
 
+				</v-card-text>
                 <v-card-actions>
                 <v-spacer></v-spacer>
+				<v-btn
+                    class="primary"
+                    @click="dialog = false">
+                    Download
+                </v-btn>
+				<v-btn
+                    class="primary"
+                    @click="dialog = false">
+                    E-mail customer
+                </v-btn>
                 <v-btn
                     color="blue darken-1"
                     text
-                    @click="dialog = false"
-                >
+                    @click="dialog = false">
                     Close
                 </v-btn>
                 <v-btn

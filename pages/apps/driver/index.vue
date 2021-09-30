@@ -39,7 +39,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="4">
-						Approval Adh
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -150,7 +150,7 @@
                             <v-text-field
                                 dense
                                 outlined
-                                label="Nama Pengemudi"
+                                label="Nama Pengemudi/User/PIC"
                                 value="Randi Eka Setiawan"
                                 hide-details=""/>
                         </v-col>
@@ -158,7 +158,7 @@
                             <v-text-field
                                 dense
                                 outlined
-                                label="Telepon Pemesan"
+                                label="Telepon Pengemudi/User/PIC"
                                 value="082126833236"
                                 hide-details=""/>
                         </v-col>
@@ -166,7 +166,7 @@
                             <v-textarea
                                 dense
                                 outlined
-                                label="Alamat Pengemudi"
+                                label="Alamat Pengemudi/User/PIC"
                                 value="Jl. Ciuyah No.50, Padaasih, Kec. Cisarua, Kabupaten Bandung Barat, Jawa Barat 40551"
                                 hide-details=""/>
                         </v-col>
@@ -277,7 +277,7 @@
 								label="Pembebanan">
 								
 								<v-radio
-									label="Pemesan"/>
+									label="Pengemudi/User/PIC"/>
 								<v-radio
 									label="Perusahaan"/>
 								
@@ -290,8 +290,6 @@
 								column
 								label="Mekanisme Pembayaran">
 								
-								<v-radio
-									label="Tunai / Kasir"/>
 								<v-radio
 									label="Billing/Transfer"/>
 								
@@ -315,24 +313,19 @@
 					<v-file-input
 						dense
 						outlined
-						label="Foto SIM"
-						value="1202144183"/>
+						label="Pilih Foto SIM"/>
 					<v-file-input
 						dense
 						outlined
-						label="Foto Form BAK"
-						value="1202144183"/>
+						label="Pilih Foto Form BAK"/>
 					<v-file-input
 						dense
 						outlined
-						label="Foto Form Konfirmasi OR"
-						value="1202144183"/>
+						label="Pilih Foto Form Konfirmasi OR"/>
 					<v-file-input
 						dense
 						outlined
-						label="Foto Form Checklist"
-						value="1202144183"
-						hide-details=""/>
+						label="Pilih Foto Form Checklist"/>
                 </v-card-text>
 				<v-card-actions>
                 <v-spacer></v-spacer>

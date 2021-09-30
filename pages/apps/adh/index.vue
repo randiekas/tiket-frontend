@@ -40,7 +40,7 @@
 					<v-divider></v-divider>
 					<v-stepper-step step="4">
 						<v-btn to="/apps/adh" color="primary" small>
-							Approval Adh
+							Approval ADH
 						</v-btn>
 					</v-stepper-step>
 

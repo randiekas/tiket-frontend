@@ -33,7 +33,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						Approval Adh
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>

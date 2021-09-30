@@ -13,8 +13,8 @@
 			</v-col>
 			
 			<v-col xs="12" md="7">
-				<v-card-title>Masuk</v-card-title>
-				<v-card-subtitle>Sistem Informasi Tiketing</v-card-subtitle>
+				<v-card-title>TRAC Ls jabar</v-card-title>
+				<v-card-subtitle>Ticket Management - Unit Selesai Order</v-card-subtitle>
 				<v-card-text>
 					Gunakan akun google anda masuk ke aplikasi.
 					
@@ -22,7 +22,7 @@
 						<v-radio
 							v-for="(item, index) in role"
 							:key="index"
-							:label="item"
+							:label="item.toUpperCase()"
 							:value="item"
 						></v-radio>
 					</v-radio-group>
@@ -54,7 +54,7 @@ export default {
 			this.$router.push(`/apps/beranda`) 
 		}
 		return {
-			role: ['akun', 'sales', 'ah', 'adh', 'bm', 'fdh', 'fleet', 'driver', 'admin'],
+			role: ['akun', 'sales', 'adh', 'bm', 'fdh', 'fleet', 'driver', 'admin'],
 			roleDipilih: 'sales',
 		}
 	},

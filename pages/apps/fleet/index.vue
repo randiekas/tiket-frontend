@@ -33,7 +33,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						Approval Adh
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -270,7 +270,7 @@
 						placeholder="Tulis disini ..."
                         />
 
-                    <p>Plan penarikan team pool</p>
+                    <p>Actual penarikan</p>
 					<v-text-field
                         label="Nama Driver"
                         required
@@ -278,6 +278,15 @@
 						outlined
 						dense
 						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Nomor WhatsApp Driver"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						type="number"
                         />
 					<v-text-field
                         label="Tanggal Penarikan"

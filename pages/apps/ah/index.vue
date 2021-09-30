@@ -19,16 +19,16 @@
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
 					<v-stepper-step step="1">
-						
+						<v-btn to="/apps/sales" color="primary" small>
 							Import SKPK
-						
+						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
-						
+						<v-btn to="/apps/sales/tiket" color="primary" small>
 							Data/buat tiket
-						
+						</v-btn>
 						
 					</v-stepper-step>
 
@@ -41,7 +41,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="4">
-						Approval Adh
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
