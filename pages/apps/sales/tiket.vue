@@ -40,13 +40,13 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
+					<v-stepper-step step="5">
+						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval BM
+					<v-stepper-step step="4">
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -81,24 +81,42 @@
                 </v-card-title>
                 <v-card-text>
                 <v-container>
-                    <v-text-field
-                        label="Nomor Polisi"
-                        required
+					<v-row>
+						<v-col md="5">
+							<v-text-field
+								label="Nomor Polisi"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								hint="Enter untuk mengambil data"
+								persistent-hint
+								/>
+						</v-col>
+						
+						<v-col md="7">
+							<v-text-field
+								label="Tipe kendaraan"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								persistent-hint
+								disabled
+								/>
+						</v-col>
+					</v-row>
+                    
+					<v-text-field
+						class="mt-2"
+						label="Nama Customer"
+						required
 						persistent-placeholder
 						outlined
 						dense
-						hint="Enter untuk mengambil data"
 						persistent-hint
-                        />
-					<p class="mb-0">Nama Customer</p>
-					<v-radio-group 
-						class="mt-0"
-						v-model="radioGroup">
-						<v-radio
-							label="PT. Sampoerna"/>
-						<v-radio
-							label="PT. Pertamnia"/>
-					</v-radio-group>
+						disabled
+						/>
 					<v-text-field
                         label="NOMOR KONTRAK "
                         required
@@ -245,11 +263,17 @@
 							<v-icon left></v-icon>
 							Data Tiket
 							<v-spacer/>
-							<v-btn small color="primary" v-on:click="dialog=true">
+							<v-btn small color="primary" v-on:click="dialog=true" class="mr-2">
 								<v-icon left>
 									mdi-plus
 								</v-icon>
 								Buat Tiket
+							</v-btn>
+							<v-btn small color="primary" v-on:click="dialog=true">
+								<v-icon left>
+									mdi-microsoft-excel
+								</v-icon>
+								Download tiket list
 							</v-btn>
 						</v-card-title>
 						<v-container class="pb-0">
@@ -316,13 +340,13 @@
 									:key="index">
 									<td>{{index+1}}</td>
 									<td>
-										<v-chip small dark color="green">
+										<v-chip small dark :color="handelWarnaStatus(index)">
 											810000210343
 										</v-chip>
 									</td>
-									<td>IBU FIRA</td>
+									<td>C2MFG INDONESIA</td>
 									<td>B1541UIZ</td>
-                                    <td>C2MFG INDONESIA</td>
+                                    <td>IBU FIRA</td>
 									<td>081298179643</td>
 									<td>30/04/2022</td>
 									<td>30/04/2022</td>
@@ -441,6 +465,17 @@ export default {
 					}
 			}
 			this.isFetching	= false
+		},
+		handelWarnaStatus: function(x){
+			let warna = "green"
+			if(x%2==0){
+				warna = "deep-purple lighten-1"
+			}
+			else if(x%3==0){
+				warna = "cyan accent-4"
+			}
+			
+			return warna
 		}
 	}
 }

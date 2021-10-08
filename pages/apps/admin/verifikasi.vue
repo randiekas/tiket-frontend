@@ -116,9 +116,9 @@
 											810000210343
 										</v-chip>
 									</td>
-									<td>IBU FIRA</td>
+									<td>C2MFG INDONESIA</td>
 									<td>B1541UIZ</td>
-                                    <td>C2MFG INDONESIA</td>
+                                    <td>IBU FIRA</td>
 									<td>081298179643</td>
 									<td>30/04/2022</td>
 									<td>30/04/2022</td>

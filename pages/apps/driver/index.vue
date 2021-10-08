@@ -38,13 +38,13 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
+					<v-stepper-step step="5">
+						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval BM
+					<v-stepper-step step="4">
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -326,6 +326,11 @@
 						dense
 						outlined
 						label="Pilih Foto Form Checklist"/>
+
+					<v-file-input
+						dense
+						outlined
+						label="Foto Serah Terima"/>
                 </v-card-text>
 				<v-card-actions>
                 <v-spacer></v-spacer>

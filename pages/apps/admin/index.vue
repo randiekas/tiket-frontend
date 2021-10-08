@@ -63,9 +63,9 @@
 											810000210343
 										</v-chip>
 									</td>
-									<td>IBU FIRA</td>
+									<td>C2MFG INDONESIA</td>
 									<td>B1541UIZ</td>
-                                    <td>C2MFG INDONESIA</td>
+                                    <td>IBU FIRA</td>
 									<td>081298179643</td>
 									<td>30/04/2022</td>
 									<td>30/04/2022</td>
@@ -533,32 +533,19 @@
 				<v-card-text>
 					<v-row>
 						<v-col md="12">
-                            <v-text-field
-								label="Tanggal Penerimaan Invoice"
-								type="date"
-								required
-								persistent-placeholder
-								outlined
-								dense
-								placeholder="Tulis disini ..."
-								/>
-							
-                        </v-col>
-						<v-col md="6">
 							<p class="mb-0">Dikirim Via </p>
 							<v-radio-group 
 								class="mt-0"
 								v-model="radioGroup">
 								<v-radio
-									label="visit walk in"/>
+									label="Visit walk in"/>
 								<v-radio
 									label="Kurir"/>
 							</v-radio-group>
                         </v-col>
-						<v-col md="6">
-							<p class="mb-0">No. Resi</p>
+						<v-col md="12">
 							<v-text-field
-								label="No Resi"
+								label="Tanggal Pengiriman Invoice"
 								type="date"
 								required
 								persistent-placeholder
@@ -566,12 +553,23 @@
 								dense
 								placeholder="Tulis disini ..."
 								/>
+							<v-text-field
+								label="No Resi"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								placeholder="Tulis disini ..."
+								hide-details=""
+								/>
+							
                         </v-col>
+						
 						<v-col md="12">
 							<v-file-input
 								dense
 								outlined
-								label="Bukti Pembayaran"
+								label="Bukti Foto Resi"
 								value="1202144183"/>
 						</v-col>
 

@@ -38,13 +38,13 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
+					<v-stepper-step step="5">
+						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval BM
+					<v-stepper-step step="4">
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>

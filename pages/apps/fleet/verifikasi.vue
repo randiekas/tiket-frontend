@@ -116,9 +116,9 @@
 											810000210343
 										</v-chip>
 									</td>
-									<td>IBU FIRA</td>
+									<td>C2MFG INDONESIA</td>
 									<td>B1541UIZ</td>
-                                    <td>C2MFG INDONESIA</td>
+                                    <td>IBU FIRA</td>
 									<td>081298179643</td>
 									<td>30/04/2022</td>
 									<td>30/04/2022</td>
@@ -515,16 +515,40 @@
 						<v-radio
 							label="Dokumen Tidak Lengkap"/>
 					</v-radio-group>
+
+					<!-- muncul ketika dokumen sudah lengkap -->
+					<p class="mb-0">Status Pembayaran</p>
+					<v-radio-group 
+						class="mt-0"
+						v-model="radioGroup">
+						<v-radio
+							label="Bayar Langsung"/>
+						<v-radio
+							label="Invoice"/>
+					</v-radio-group>
+
+					<!-- muncul ketika bayar langsung -->
+					<v-file-input
+						dense
+						outlined
+						label="Lampiran Bukti Pembayaran"
+						value="1202144183"
+						hide-details=""/>
 					<v-row>
 						<v-col md="12">
-                            <v-file-input
-                                dense
-                                outlined
-                                label="Lampiran Bukti Pembayaran"
-                                value="1202144183"
-                                hide-details=""/>
-                        </v-col>
+							<p class="mb-0 mt-4">Status Unit</p>
+							<v-radio-group 
+								class="mt-0"
+								v-model="radioGroup">
+								<v-radio
+									label="Unit Disposal"/>
+								<v-radio
+									label="OR Include Biaya Sewa"/>
+								<v-radio
+									label="Unit dikenakan OR"/>
+							</v-radio-group>
 
+                        </v-col>
 						<v-col md="12">
                             <v-text-field
                                 dense
@@ -543,6 +567,7 @@
 						</v-col>
 					</v-row>
 
+					
 				</v-card-text>
                 <v-card-actions>
                 <v-spacer></v-spacer>

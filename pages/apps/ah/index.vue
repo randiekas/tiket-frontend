@@ -40,13 +40,13 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
+					<v-stepper-step step="5">
+						Approval BM
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval BM
+					<v-stepper-step step="4">
+						Approval ADH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -113,9 +113,9 @@
 											810000210343
 										</v-chip>
 									</td>
-									<td>IBU FIRA</td>
+									<td>C2MFG INDONESIA</td>
 									<td>B1541UIZ</td>
-                                    <td>C2MFG INDONESIA</td>
+                                    <td>IBU FIRA</td>
 									<td>081298179643</td>
 									<td>30/04/2022</td>
 									<td>30/04/2022</td>
@@ -127,6 +127,9 @@
 										</v-btn>
 										<v-btn small primary dark color="green">
 											Approve
+										</v-btn>
+										<v-btn small primary dark color="deep-purple">
+											Approve BA
 										</v-btn>
 									</td>
 								</tr>
