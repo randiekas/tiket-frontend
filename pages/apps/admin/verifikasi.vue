@@ -3,7 +3,7 @@
 		<div class="primary pb-16">
 		<v-container>
 			<Head
-				title="Tiketing"
+				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
 				<v-btn 

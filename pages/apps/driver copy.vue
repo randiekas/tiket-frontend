@@ -3,7 +3,7 @@
 		<div class="primary pb-16">
 		<v-container>
 			<Head
-				title="Tiketing"
+				title="Ticketing"
 				subtitle="Overview tiket bulan ini - January"
 				color="white--text">
 				<v-btn 
