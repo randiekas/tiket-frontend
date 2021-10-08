@@ -217,6 +217,14 @@
 						placeholder="Tulis disini ..."
                         />
 
+<v-text-field
+                        label="Alasan Keterlambatan"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
                     <p>Plan penarikan team pool</p>
 					<v-text-field
                         label="Nama Driver"
@@ -481,6 +489,96 @@
 					</v-row>
 				</v-card-text>
 
+				<v-card-title>Proses Administrasi</v-card-title>
+				<v-card-subtitle>Diisi admin BCO</v-card-subtitle>
+				<v-card-text>
+					<v-row>
+						<v-col md="12">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="No. Invoice"
+                                value="1202144183"
+                                hide-details=""/>
+							
+							
+                        </v-col>
+						<v-col md="12">
+                            <v-text-field
+								label="Tanggal Terbit Invoice"
+								type="date"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								placeholder="Tulis disini ..."
+								/>
+                        </v-col>
+						<v-col md="12">
+							<v-text-field
+								label="Tanggal backclose notif SAP"
+								type="date"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								placeholder="Tulis disini ..."
+								/>
+						</v-col>
+					</v-row>
+				</v-card-text>
+
+				<v-card-title>Proses Penagihan</v-card-title>
+				<v-card-subtitle>Diisi admin AR jika pembayaran invoicing</v-card-subtitle>
+				<v-card-text>
+					<v-row>
+						<v-col md="12">
+                            <v-text-field
+								label="Tanggal Penerimaan Invoice"
+								type="date"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								placeholder="Tulis disini ..."
+								/>
+							
+                        </v-col>
+						<v-col md="6">
+							<p class="mb-0">Dikirim Via </p>
+							<v-radio-group 
+								class="mt-0"
+								v-model="radioGroup">
+								<v-radio
+									label="visit walk in"/>
+								<v-radio
+									label="Kurir"/>
+							</v-radio-group>
+                        </v-col>
+						<v-col md="6">
+							<p class="mb-0">No. Resi</p>
+							<v-text-field
+								label="No Resi"
+								type="date"
+								required
+								persistent-placeholder
+								outlined
+								dense
+								placeholder="Tulis disini ..."
+								/>
+                        </v-col>
+						<v-col md="12">
+							<v-file-input
+								dense
+								outlined
+								label="Bukti Pembayaran"
+								value="1202144183"/>
+						</v-col>
+
+					</v-row>
+				</v-card-text>
+
+
                 <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
@@ -488,7 +586,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Close
+                    Cancel
                 </v-btn>
                 <v-btn
                     color="blue darken-1"

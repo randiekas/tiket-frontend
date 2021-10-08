@@ -82,7 +82,7 @@
                 <v-card-text>
                 <v-container>
                     <v-text-field
-                        label="NOMOR CUSTOMER (CMD)"
+                        label="Nomor Polisi"
                         required
 						persistent-placeholder
 						outlined
@@ -90,14 +90,14 @@
 						hint="Enter untuk mengambil data"
 						persistent-hint
                         />
-					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
+					<p class="mb-0">Nama Customer</p>
 					<v-radio-group 
 						class="mt-0"
 						v-model="radioGroup">
 						<v-radio
-							label="B 154 IUX - Toyota Avanza"/>
+							label="PT. Sampoerna"/>
 						<v-radio
-							label="B 1234 XYZ - Daihatsu Xenia"/>
+							label="PT. Pertamnia"/>
 					</v-radio-group>
 					<v-text-field
                         label="NOMOR KONTRAK "
@@ -194,6 +194,14 @@
 					</v-radio-group>
 					<v-text-field
                         label="Lain-lain"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
+<v-text-field
+                        label="Alasan Keterlambatan"
                         required
 						persistent-placeholder
 						dense

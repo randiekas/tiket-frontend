@@ -270,6 +270,14 @@
 						placeholder="Tulis disini ..."
                         />
 
+<v-text-field
+                        label="Alasan Keterlambatan"
+                        required
+						persistent-placeholder
+						dense
+						placeholder="Tulis disini ..."
+                        />
+
                     <p>Plan penarikan team pool</p>
 					<v-text-field
                         label="Nama Driver"
