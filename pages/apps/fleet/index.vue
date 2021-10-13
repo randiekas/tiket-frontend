@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -20,10 +20,10 @@
 				<v-stepper-header>
 
 					<v-stepper-step step="1">
-						
-							Data/buat tiket
-						
-						
+
+							Buat tiket
+
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -55,9 +55,9 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="7">
-						
-							Verifikasi Driver
-						
+
+							Driver/PDI
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -69,7 +69,7 @@
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -96,9 +96,9 @@
 									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
 									<th>Nopol</th>
-									<th>PIC / User</th>									
+									<th>PIC / User</th>
 									<th>Telepon</th>
-									
+
 									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
@@ -107,7 +107,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -125,10 +125,10 @@
                                     <td>Kontrak Berakhir</td>
 									<td>CICI</td>
 									<td>
-										<v-btn 
+										<v-btn
 											v-on:click="dialog=true"
 											small primary color="primary">
-											Detil
+											Detail
 										</v-btn>
 									</td>
 								</tr>
@@ -136,10 +136,10 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
-		
+
 		<v-dialog
             v-model="dialog"
             persistent
@@ -147,7 +147,7 @@
             >
             <v-card>
                 <v-card-title>
-                <span class="text-h5">Detil Tiket</span>
+                <span class="text-h5">Detail Tiket</span>
                 </v-card-title>
                 <v-card-text>
                 <v-container>
@@ -161,7 +161,7 @@
 						persistent-hint
                         />
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
-					<v-radio-group 
+					<v-radio-group
 						class="mt-0"
 						v-model="radioGroup">
 						<v-radio
@@ -226,7 +226,7 @@
 						dense
 						placeholder="Tulis disini ..."
                         />
-                    
+
 					<p>Jadwal Penarikan</p>
 					<v-text-field
                         label="Tanggal Penarikan"
@@ -270,7 +270,7 @@
 						placeholder="Tulis disini ..."
                         />
 
-<v-text-field
+                    <v-text-field
                         label="Alasan Keterlambatan"
                         required
 						persistent-placeholder
@@ -278,26 +278,9 @@
 						placeholder="Tulis disini ..."
                         />
 
-                    <p>Actual penarikan</p>
-					<v-text-field
-                        label="Nama Driver"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
-					<v-text-field
-                        label="Nomor WhatsApp Driver"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-						type="number"
-                        />
-					<v-text-field
-                        label="Tanggal Penarikan"
+                    <p>Actual penarikan/Serah Terima</p>
+                    <v-text-field
+                        label="Tanggal Notif Back Sewa"
 						type="date"
                         required
 						persistent-placeholder
@@ -306,7 +289,33 @@
 						placeholder="Tulis disini ..."
                         />
 					<v-text-field
-                        label="Waktu Penarikan"
+                        label="Nama Driver/PDI"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Nomor WhatsApp Driver/PDI"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						type="number"
+                        />
+					<v-text-field
+                        label="Tanggal Penarikan/Serah Terima"
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+                        />
+					<v-text-field
+                        label="Waktu Penarikan/Serah Terima"
 						type="time"
                         required
 						persistent-placeholder
@@ -336,7 +345,7 @@
                 </v-card-actions>
             </v-card>
             </v-dialog>
-		
+
 	</div>
 </template>
 <script>
@@ -371,7 +380,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -379,7 +388,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

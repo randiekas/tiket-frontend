@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -27,20 +27,15 @@
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
 						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Data/buat tiket
+							Buat tiket
 						</v-btn>
-						
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
+
+
 					<v-stepper-step step="3">
-						<v-btn to="/apps/ah" color="primary" small>
-							Approval Ah
-						</v-btn>
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
 						Approval BM
 					</v-stepper-step>
 
@@ -50,23 +45,23 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi Driver
+					<v-stepper-step step="6">
+						Driver/PDI
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="8">
+					<v-stepper-step step="7">
 						Verifikasi FS
 					</v-stepper-step>
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -115,7 +110,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -137,12 +132,12 @@
 										</v-btn>
 									</td>
 								</tr>
-								 
+
 							</tbody>
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
 	</div>
@@ -178,7 +173,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -186,7 +181,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -27,13 +27,10 @@
 						Buat Tiket
 					</v-stepper-step>
 
-					<v-divider></v-divider>
-					<v-stepper-step step="3">
-						Approval Ah
-					</v-stepper-step>
+
 
 					<v-divider></v-divider>
-					<v-stepper-step step="5">
+					<v-stepper-step step="3">
 						Approval BM
 					</v-stepper-step>
 
@@ -43,17 +40,17 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi Driver
+					<v-stepper-step step="6">
+						Driver/PDI
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="8">
+					<v-stepper-step step="7">
 						Verifikasi FS
 					</v-stepper-step>
 
@@ -94,7 +91,7 @@
 					<v-card class="border--white blue darken-4" elevation="1" dark>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Tiket Open : 120 
+							Tiket Open : 120
 						</v-card-title>
 						<v-card-text>
 							<v-list-item dense>
@@ -144,9 +141,9 @@
 									</v-chip>
 								</v-list-item-icon>
 							</v-list-item>
-							<v-btn 
-								small 
-								block 
+							<v-btn
+								small
+								block
 								class="white black--text mt-3"
 								to="/apps/tiket">
 								Laporan Selengkapnya
@@ -316,9 +313,9 @@
 						</v-card-text>
 					</v-card>
 				</v-col>
-				
+
 			</v-row> -->
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -358,10 +355,10 @@
 								type="info">
 								Ada {{ dasbor.ganda.length }} penduduk yang terdaftar di desa lain
 							</v-alert>
-							
+
 							<div>
-								<v-list-item 
-									dense 
+								<v-list-item
+									dense
 									to="/apps/tiket">
 									<v-list-item-content>
 										<v-list-item-title>
@@ -377,16 +374,16 @@
 											color="red"
 											dark>
 											Driver
-										</v-chip>										
+										</v-chip>
 										<v-icon>
 											mdi-chevron-right
 										</v-icon>
 									</v-list-item-icon>
-									
+
 								</v-list-item>
 								<v-divider/>
-								<v-list-item 
-									dense 
+								<v-list-item
+									dense
 									to="/apps/tiket">
 									<v-list-item-content>
 										<v-list-item-title>
@@ -402,16 +399,16 @@
 											color="orange"
 											dark>
 											fleet
-										</v-chip>										
+										</v-chip>
 										<v-icon>
 											mdi-chevron-right
 										</v-icon>
 									</v-list-item-icon>
-									
+
 								</v-list-item>
 								<v-divider/>
-								<v-list-item 
-									dense 
+								<v-list-item
+									dense
 									to="/apps/tiket/123">
 									<v-list-item-content>
 										<v-list-item-title>
@@ -427,16 +424,16 @@
 											color="blue"
 											dark>
 											Admin
-										</v-chip>										
+										</v-chip>
 										<v-icon>
 											mdi-chevron-right
 										</v-icon>
 									</v-list-item-icon>
-									
+
 								</v-list-item>
 								<v-divider/>
-								<v-list-item 
-									dense 
+								<v-list-item
+									dense
 									to="/apps/tiket/123">
 									<v-list-item-content>
 										<v-list-item-title>
@@ -452,16 +449,16 @@
 											color="green"
 											dark>
 											Selesai
-										</v-chip>										
+										</v-chip>
 										<v-icon>
 											mdi-chevron-right
 										</v-icon>
 									</v-list-item-icon>
-									
+
 								</v-list-item>
 								<v-divider/>
 							</div>
-							
+
 						</v-card-text>
 					</v-card>
 				</v-col>
@@ -522,7 +519,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -530,7 +527,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

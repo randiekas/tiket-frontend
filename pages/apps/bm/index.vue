@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -19,56 +19,53 @@
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
 					<v-stepper-step step="1">
-						
+
 							Import SKPK
-						
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
-						
-							Data/buat tiket
-						
-						
+
+							Buat tiket
+
+
 					</v-stepper-step>
+
+
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						Approval Ah
+
+							Approval ADH
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="4">
-						
-							Approval ADH
-						
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
 						<v-btn to="/apps/bm" color="primary" small>
 						Approval BM
 						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi Driver
+					<v-stepper-step step="6">
+						Driver/PDI
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="8">
+					<v-stepper-step step="7">
 						Verifikasi FS
 					</v-stepper-step>
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -95,9 +92,9 @@
 									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
 									<th>Nopol</th>
-									<th>PIC / User</th>									
+									<th>PIC / User</th>
 									<th>Telepon</th>
-									
+
 									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
@@ -106,7 +103,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -125,7 +122,7 @@
 									<td>CICI</td>
 									<td>
 										<v-btn small primary color="primary">
-											Detil
+											Detail
 										</v-btn>
 										<v-btn small primary dark color="green">
 											Approve
@@ -136,7 +133,7 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
 	</div>
@@ -172,7 +169,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -180,7 +177,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

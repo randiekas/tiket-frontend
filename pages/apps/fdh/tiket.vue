@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -27,15 +27,12 @@
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
 						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Data/buat tiket
+							Buat tiket
 						</v-btn>
-						
+
 					</v-stepper-step>
 
-					<v-divider></v-divider>
-					<v-stepper-step step="3">
-						Approval Ah
-					</v-stepper-step>
+
 
 					<v-divider></v-divider>
 					<v-stepper-step step="5">
@@ -54,7 +51,7 @@
 
 					<v-divider></v-divider>
 					<v-stepper-step step="7">
-						Verifikasi Driver
+						Driver/PDI
 					</v-stepper-step>
 
 					<v-divider></v-divider>
@@ -64,7 +61,7 @@
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -80,7 +77,7 @@
                 <v-card-text>
                 <v-container>
                     <v-text-field
-                        
+
                         label="NOMOR CUSTOMER (CMD)"
                         required
                         />
@@ -125,7 +122,7 @@
                         required
                         />
                     <v-subheader>
-                        JADWAL PENARIKAN 
+                        JADWAL PENARIKAN
                     </v-subheader>
                     <v-text-field
                         label="TANGGAL PENARIKAN"
@@ -192,7 +189,7 @@
 									<th>PIC / User</th>
 									<th>Jabatan / Bagian</th>
 									<th>Telepon</th>
-									
+
 									<th>Nomor Kontrak</th>
 									<th>Berakhir</th>
 									<th>BCO</th>
@@ -205,7 +202,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -214,7 +211,7 @@
                                     <td>C2MFG INDONESIA</td>
 									<td>SEKRETARIS</td>
 									<td>081298179643</td>
-									
+
 									<td>2200050707</td>
 									<td>30/04/2022</td>
 									<td>CICI</td>
@@ -233,12 +230,12 @@
 										</v-btn>
 									</td>
 								</tr>
-								 
+
 							</tbody>
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
 	</div>
@@ -274,7 +271,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -282,7 +279,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

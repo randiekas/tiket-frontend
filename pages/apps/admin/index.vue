@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -16,7 +16,7 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -43,9 +43,9 @@
 									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
 									<th>Nopol</th>
-									<th>PIC / User</th>									
+									<th>PIC / User</th>
 									<th>Telepon</th>
-									
+
 									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
@@ -54,7 +54,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -72,10 +72,10 @@
                                     <td>Kontrak Berakhir</td>
 									<td>CICI</td>
 									<td>
-										<v-btn 
+										<v-btn
 											v-on:click="dialog=true"
 											small primary color="primary">
-											Detil
+											Detail
 										</v-btn>
 									</td>
 								</tr>
@@ -83,10 +83,10 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
-		
+
 		<v-dialog
             v-model="dialog"
             persistent
@@ -94,7 +94,7 @@
             >
             <v-card>
                 <v-card-title>
-                <span class="text-h5">Detil Tiket</span>
+                <span class="text-h5">Detail Tiket</span>
                 </v-card-title>
                 <v-card-text>
                 <v-container>
@@ -108,7 +108,7 @@
 						persistent-hint
                         />
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
-					<v-radio-group 
+					<v-radio-group
 						class="mt-0"
 						v-model="radioGroup">
 						<v-radio
@@ -173,7 +173,7 @@
 						dense
 						placeholder="Tulis disini ..."
                         />
-                    
+
 					<p>Jadwal Penarikan</p>
 					<v-text-field
                         label="Tanggal Penarikan"
@@ -284,7 +284,7 @@
                                 value="Jl. Ciuyah No.50, Padaasih, Kec. Cisarua, Kabupaten Bandung Barat, Jawa Barat 40551"
                                 hide-details=""/>
                         </v-col>
-                        
+
                     </v-row>
                     <p class="text-overline mt-4">
                         Detail Kejadian
@@ -336,7 +336,7 @@
 						</v-col>
 						<v-col md="6">
 							<v-checkbox
-								dense	
+								dense
 								hide-details=""
 								label="Komponen 4"/>
 							<v-checkbox
@@ -360,7 +360,7 @@
 							</v-btn>
 						</v-col>
 					</v-row>
-	
+
 					<p class="text-overline mt-4">
                         Own Risk
                     </p>
@@ -389,12 +389,12 @@
 								hide-details=""
 								column
 								label="Pembebanan">
-								
+
 								<v-radio
 									label="Pemesan"/>
 								<v-radio
 									label="Perusahaan"/>
-								
+
 							</v-radio-group>
                         </v-col>
 
@@ -403,12 +403,12 @@
 								hide-details=""
 								column
 								label="Mekanisme Pembayaran">
-								
+
 								<v-radio
 									label="Tunai / Kasir"/>
 								<v-radio
 									label="Billing/Transfer"/>
-								
+
 							</v-radio-group>
                         </v-col>
 
@@ -454,7 +454,7 @@
 				<v-card-subtitle>Diisi oleh Fleet</v-card-subtitle>
 				<v-card-text>
 					<p class="mb-0">Status Dokumen</p>
-					<v-radio-group 
+					<v-radio-group
 						class="mt-0"
 						v-model="radioGroup">
 						<v-radio
@@ -500,8 +500,8 @@
                                 label="No. Invoice"
                                 value="1202144183"
                                 hide-details=""/>
-							
-							
+
+
                         </v-col>
 						<v-col md="12">
                             <v-text-field
@@ -516,7 +516,7 @@
                         </v-col>
 						<v-col md="12">
 							<v-text-field
-								label="Tanggal backclose notif SAP"
+								label="Tanggal Close Notif Sewa"
 								type="date"
 								required
 								persistent-placeholder
@@ -534,7 +534,7 @@
 					<v-row>
 						<v-col md="12">
 							<p class="mb-0">Dikirim Via </p>
-							<v-radio-group 
+							<v-radio-group
 								class="mt-0"
 								v-model="radioGroup">
 								<v-radio
@@ -562,9 +562,9 @@
 								placeholder="Tulis disini ..."
 								hide-details=""
 								/>
-							
+
                         </v-col>
-						
+
 						<v-col md="12">
 							<v-file-input
 								dense
@@ -596,7 +596,7 @@
                 </v-card-actions>
             </v-card>
             </v-dialog>
-		
+
 	</div>
 </template>
 <script>
@@ -631,7 +631,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -639,7 +639,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

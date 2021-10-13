@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -19,26 +19,23 @@
 			<v-stepper alt-labels class="mb-8">
 				<v-stepper-header>
 					<v-stepper-step step="1">
-						
+
 							Import SKPK
-						
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
-						
-							Data/buat tiket
-						
-						
+
+							Buat tiket
+
+
 					</v-stepper-step>
+
+
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						Approval Ah
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
 						Approval BM
 					</v-stepper-step>
 
@@ -48,25 +45,25 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
+					<v-stepper-step step="6">
 						<v-btn to="/apps/driver" color="primary" small>
-							Verifikasi Driver
+							Driver/PDI
 						</v-btn>
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="8">
+					<v-stepper-step step="7">
 						Verifikasi FS
 					</v-stepper-step>
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -93,9 +90,9 @@
 									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
 									<th>Nopol</th>
-									<th>PIC / User</th>									
+									<th>PIC / User</th>
 									<th>Telepon</th>
-									
+
 									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
@@ -104,7 +101,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -122,10 +119,10 @@
                                     <td>Kontrak Berakhir</td>
 									<td>CICI</td>
 									<td>
-										<v-btn 
+										<v-btn
 											v-on:click="dialog=true"
 											small primary color="primary">
-											Detil
+											Detail
 										</v-btn>
 									</td>
 								</tr>
@@ -133,7 +130,7 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
 		 <v-dialog
@@ -170,7 +167,7 @@
                                 value="Jl. Ciuyah No.50, Padaasih, Kec. Cisarua, Kabupaten Bandung Barat, Jawa Barat 40551"
                                 hide-details=""/>
                         </v-col>
-                        
+
                     </v-row>
                     <p class="text-overline mt-4">
                         Detail Kejadian
@@ -193,60 +190,101 @@
                                 value="lampumerah al azhar..."
 								hide-details=""/>
                         </v-col>
-						<v-col md="12">
-                            <v-textarea
-                                dense
-                                outlined
-                                label="Uraian Kejadian"
-                                value="Mobil depan di lampu merah ngerem mendadak Posisi lampu hijau,mobil depan ragu ragu buat melewati Lampu merah ,ingin melewati mobil depan tibatiba mobil depan ngerem mendadak"
-                                hide-details=""/>
-                        </v-col>
-						<v-col md="12">
-							<p class="mb-0">
-								Bagian komponen yang rusak / hilang
-							</p>
+
+						<v-col
+                            md="12">
+                            <v-card outlined>
+                                <v-card-text>
+                                    <v-checkbox
+                                        dense
+                                        :label="`Body Bagian Depan`"/>
+                                    <v-text-field
+                                        dense
+                                        label="Keterangan"
+                                        hide-details=""/>
+                                    <v-file-input
+                                        dense
+                                        label="Pilih File"
+                                        hide-details=""/>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
-						<v-col md="6">
-							<v-checkbox
-								dense
-								hide-details=""
-								label="Komponen 1"/>
-							<v-checkbox
-								dense
-								hide-details=""
-								label="Komponen 2"/>
-							<v-checkbox
-								dense
-								hide-details=""
-								label="Komponen 3"/>
+                        <v-col
+                            md="12">
+                            <v-card outlined>
+                                <v-card-text>
+                                    <v-checkbox
+                                        dense
+                                        :label="`Body Bagian Kiri`"/>
+                                    <v-text-field
+                                        dense
+                                        label="Keterangan"
+                                        hide-details=""/>
+                                    <v-file-input
+                                        dense
+                                        label="Pilih File"
+                                        hide-details=""/>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
-						<v-col md="6">
-							<v-checkbox
-								dense	
-								hide-details=""
-								label="Komponen 4"/>
-							<v-checkbox
-								dense
-								hide-details=""
-								label="Komponen 5"/>
+                        <v-col
+                            md="12">
+                            <v-card outlined>
+                                <v-card-text>
+                                    <v-checkbox
+                                        dense
+                                        :label="`Body Bagian Kanan`"/>
+                                    <v-text-field
+                                        dense
+                                        label="Keterangan"
+                                        hide-details=""/>
+                                    <v-file-input
+                                        dense
+                                        label="Pilih File"
+                                        hide-details=""/>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
-						<v-col md="12">
-							<v-text-field
-								class="mt-4"
-								dense
-								outlined
-								label="Bagian komponen yang rusak/hilang lainnya"
-								value="lampu depan pecah"
-								hide-details="lampumerah al azhar..."
-								append-icon="mdi-delete-circle"/>
+                        <v-col
+                            md="12">
+                            <v-card outlined>
+                                <v-card-text>
+                                    <v-checkbox
+                                        dense
+                                        :label="`Body Bagian Belakang`"/>
+                                    <v-text-field
+                                        dense
+                                        label="Keterangan"
+                                        hide-details=""/>
+                                    <v-file-input
+                                        dense
+                                        label="Pilih File"
+                                        hide-details=""/>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
-						<v-col md="12" class="text-right">
-							<v-btn small>
-								Tambah
-							</v-btn>
+                        <v-col
+                            md="12">
+                            <v-card outlined>
+                                <v-card-text>
+                                    <v-checkbox
+                                        dense
+                                        :label="`Body Bagian Atas`"/>
+                                    <v-text-field
+                                        dense
+                                        label="Keterangan"
+                                        hide-details=""/>
+                                    <v-file-input
+                                        dense
+                                        label="Pilih File"
+                                        hide-details=""/>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
+
+
 					</v-row>
-	
+
 					<p class="text-overline mt-4">
                         Own Risk
                     </p>
@@ -270,17 +308,77 @@
                                 value="2021-06-06"
                                 hide-details=""/>
                         </v-col>
+                        <v-col md="12">
+                            <v-file-input
+                                dense
+                                outlined
+                                label="Lampirkan Bukti Pembayaran"
+                                hide-details=""/>
+                        </v-col>
+                        <v-col md="12">
+							<v-text-field
+								class="mt-4"
+								dense
+								outlined
+								label="Bagian Komponen yang hilang"
+								value="lampu depan pecah"
+								hide-details="lampumerah al azhar..."
+								append-icon="mdi-delete-circle"/>
+						</v-col>
+						<v-col md="12" class="text-right">
+							<v-btn small>
+								Tambah
+							</v-btn>
+						</v-col>
+                    </v-row>
+
+                    <p class="text-overline mt-4">
+                        Add Charge
+                    </p>
+
+					<v-row>
 						<v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Jumlah Add Charge"
+                                prefix="Rp. "
+                                value="10000"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+							<v-text-field
+                                dense
+                                outlined
+                                label="Rencana Tanggal Pembayaran"
+								type="date"
+                                value="2021-06-06"
+                                hide-details=""/>
+                        </v-col>
+                        <v-col md="12">
+                            <v-file-input
+                                dense
+                                outlined
+                                label="Lampirkan Bukti Pembayaran"
+                                hide-details=""/>
+                        </v-col>
+                    </v-row>
+
+                    <v-row>
+                        <v-col md="12">
                             <v-radio-group
 								hide-details=""
 								column
-								label="Pembebanan">
-								
+								label="Pembebanan"
+                                v-model="pembebanan">
+
 								<v-radio
-									label="Pengemudi/User/PIC"/>
+									label="Ditagihkan"
+                                    value="ditagihkan"/>
 								<v-radio
-									label="Perusahaan"/>
-								
+									label="Tidak Ditagihkan"
+                                    value="tidakditagihkan"/>
+
 							</v-radio-group>
                         </v-col>
 
@@ -289,15 +387,30 @@
 								hide-details=""
 								column
 								label="Mekanisme Pembayaran">
-								
+
 								<v-radio
-									label="Billing/Transfer"/>
-								
+									label="Bayar Langsung (User/PIC)"/>
+								<v-radio
+									label="Invoice (Perusahaan)"/>
+
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="6">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Pembayaran">
+
+								<v-radio
+									label="Transfer"/>
+
 							</v-radio-group>
                         </v-col>
 
 						<v-col md="12">
 							<v-textarea
+                                rows="2"
 								dense
 								outlined
 								label="Catatan"
@@ -313,24 +426,48 @@
 					<v-file-input
 						dense
 						outlined
-						label="Pilih Foto SIM"/>
+						label="Foto SIM"/>
+                    <v-text-field
+                        dense
+                        outlined
+                        label="Keterangan"
+                        />
 					<v-file-input
 						dense
 						outlined
-						label="Pilih Foto Form BAK"/>
+						label="Foto Form BAK"/>
+                    <v-text-field
+                        dense
+                        outlined
+                        label="Keterangan"
+                        />
 					<v-file-input
 						dense
 						outlined
-						label="Pilih Foto Form Konfirmasi OR"/>
+						label="Foto Form Konfirmasi OR"/>
+                    <v-text-field
+                        dense
+                        outlined
+                        label="Keterangan"
+                        />
 					<v-file-input
 						dense
 						outlined
-						label="Pilih Foto Form Checklist"/>
-
+						label="Foto Form Checklist"/>
+                    <v-text-field
+                        dense
+                        outlined
+                        label="Keterangan"
+                        />
 					<v-file-input
 						dense
 						outlined
 						label="Foto Serah Terima"/>
+                    <v-text-field
+                        dense
+                        outlined
+                        label="Keterangan"
+                        hide-details=""/>
                 </v-card-text>
 				<v-card-actions>
                 <v-spacer></v-spacer>
@@ -385,7 +522,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -393,7 +530,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

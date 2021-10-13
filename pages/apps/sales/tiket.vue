@@ -6,8 +6,8 @@
 				title="Ticketing"
 				subtitle="Seluruh Alur proses SKPK"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="handelKeluar">
 					<v-icon left>
@@ -27,20 +27,13 @@
 					<v-divider></v-divider>
 					<v-stepper-step step="2">
 						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Data/buat tiket
+							Buat tiket
 						</v-btn>
-						
+
 					</v-stepper-step>
 
 					<v-divider></v-divider>
 					<v-stepper-step step="3">
-						<v-btn to="/apps/ah" color="primary" small>
-							Approval Ah
-						</v-btn>
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
 						Approval BM
 					</v-stepper-step>
 
@@ -50,23 +43,23 @@
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="6">
+					<v-stepper-step step="5">
 						Approval FDH
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi Driver
+					<v-stepper-step step="6">
+						Driver/PDI
 					</v-stepper-step>
 
 					<v-divider></v-divider>
-					<v-stepper-step step="8">
+					<v-stepper-step step="7">
 						Verifikasi FS
 					</v-stepper-step>
 
 				</v-stepper-header>
 			</v-stepper>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -93,7 +86,7 @@
 								persistent-hint
 								/>
 						</v-col>
-						
+
 						<v-col md="7">
 							<v-text-field
 								label="Tipe kendaraan"
@@ -106,7 +99,7 @@
 								/>
 						</v-col>
 					</v-row>
-                    
+
 					<v-text-field
 						class="mt-2"
 						label="Nama Customer"
@@ -166,6 +159,14 @@
 						placeholder="Tulis disini ..."
                         />
 
+                    <p class="mb-0">Status Penarikan</p>
+					<v-radio-group class="mt-0">
+						<v-radio
+							label="Unit di ambil"/>
+						<v-radio
+							label="Customer antar ke pool"/>
+					</v-radio-group>
+
 					<v-text-field
                         label="Alamat penarikan kendaraan"
                         required
@@ -174,7 +175,7 @@
 						dense
 						placeholder="Tulis disini ..."
                         />
-                    
+
 					<p>Jadwal Penarikan</p>
 					<v-text-field
                         label="Tanggal Penarikan"
@@ -226,7 +227,7 @@
 						placeholder="Tulis disini ..."
                         />
 
-                    
+
                 </v-container>
                 <small>*indicates required field</small>
                 </v-card-text>
@@ -324,9 +325,9 @@
 									<th>Nomor Notif</th>
 									<th>Nama Customer</th>
 									<th>Nopol</th>
-									<th>PIC / User</th>									
+									<th>PIC / User</th>
 									<th>Telepon</th>
-									
+
 									<th>Kontrak Berakhir</th>
                                     <th>Jadwal Penarikan</th>
                                     <th>Alasan Penarikan</th>
@@ -335,7 +336,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr 
+								<tr
 									v-for="(item, index) in 10"
 									:key="index">
 									<td>{{index+1}}</td>
@@ -354,7 +355,7 @@
 									<td>CICI</td>
 									<td>
 										<v-btn small primary color="primary">
-											Detil
+											Detail
 										</v-btn>
 									</td>
 								</tr>
@@ -362,7 +363,7 @@
 						</v-simple-table>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
 		</v-container>
 	</div>
@@ -409,7 +410,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){
@@ -474,7 +475,7 @@ export default {
 			else if(x%3==0){
 				warna = "cyan accent-4"
 			}
-			
+
 			return warna
 		}
 	}
