@@ -168,7 +168,7 @@
 					</v-radio-group>
 
 					<v-text-field
-                        label="Alamat penarikan kendaraan"
+                        label="Alamat penarikan/serahterima kendaraan"
                         required
 						persistent-placeholder
 						outlined
@@ -178,7 +178,7 @@
 
 					<p>Jadwal Penarikan</p>
 					<v-text-field
-                        label="Tanggal Penarikan"
+                        label="Tanggal penarikan/serahterima kendaraan"
 						type="date"
                         required
 						persistent-placeholder
@@ -187,7 +187,7 @@
 						placeholder="Tulis disini ..."
                         />
 					<v-text-field
-                        label="Waktu Penarikan"
+                        label="Waktu penarikan/serahterima kendaraan"
 						type="time"
                         required
 						persistent-placeholder
