@@ -163,7 +163,7 @@
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="B 154 IUX - Toyota Avanza"/>
 						<v-radio
@@ -503,49 +503,29 @@
                 </v-card-text>
 
 
-				<v-card-title>Verifikasi Catatan</v-card-title>
-				<v-card-subtitle>Diisi oleh Fleet</v-card-subtitle>
+				<v-card-title>Verifikasi Dokumen</v-card-title>
+				<v-card-subtitle>Diisi oleh Fleet Stock</v-card-subtitle>
 				<v-card-text>
 					<p class="mb-0">Status Dokumen</p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="Dokumen Sesuai dan lengkap"/>
 						<v-radio
 							label="Dokumen Tidak Lengkap"/>
 					</v-radio-group>
 
-					<!-- muncul ketika dokumen sudah lengkap -->
-					<p class="mb-0">Status Pembayaran</p>
-					<v-radio-group
-						class="mt-0"
-						v-model="radioGroup">
-						<v-radio
-							label="Bayar Langsung"/>
-						<v-radio
-							label="Invoice"/>
-					</v-radio-group>
-
-					<!-- muncul ketika bayar langsung -->
-					<v-file-input
-						dense
-						outlined
-						label="Lampiran Bukti Pembayaran"
-						value="1202144183"
-						hide-details=""/>
 					<v-row>
 						<v-col md="12">
 							<p class="mb-0 mt-4">Status Unit</p>
 							<v-radio-group
 								class="mt-0"
-								v-model="radioGroup">
+								>
 								<v-radio
 									label="Unit Disposal"/>
 								<v-radio
-									label="OR Include Biaya Sewa"/>
-								<v-radio
-									label="Unit dikenakan OR"/>
+									label="Unit Non Disposal"/>
 							</v-radio-group>
 
                         </v-col>
@@ -592,7 +572,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Save
+                    Submit
                 </v-btn>
                 </v-card-actions>
             </v-card>

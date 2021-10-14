@@ -98,6 +98,11 @@
 								disabled
 								/>
 						</v-col>
+                        <v-col md="12" class="text-right">
+                            <v-btn small>
+                                Tambah Nopol
+                            </v-btn>
+						</v-col>
 					</v-row>
 
 					<v-text-field
@@ -162,7 +167,7 @@
                     <p class="mb-0">Status Penarikan</p>
 					<v-radio-group class="mt-0">
 						<v-radio
-							label="Unit di ambil"/>
+							label="Unit diambil"/>
 						<v-radio
 							label="Customer antar ke pool"/>
 					</v-radio-group>
@@ -245,7 +250,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Save
+                    Submit
                 </v-btn>
                 </v-card-actions>
             </v-card>

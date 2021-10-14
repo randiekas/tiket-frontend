@@ -110,7 +110,7 @@
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="B 154 IUX - Toyota Avanza"/>
 						<v-radio
@@ -456,7 +456,7 @@
 					<p class="mb-0">Status Dokumen</p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="Dokumen Lengkap"/>
 						<v-radio
@@ -493,6 +493,42 @@
 				<v-card-subtitle>Diisi admin BCO</v-card-subtitle>
 				<v-card-text>
 					<v-row>
+                        <v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Jumlah OR"
+                                prefix="Rp. "
+                                value="10000"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+							<v-text-field
+                                dense
+                                outlined
+                                label="Nominal OR"
+								type="number"
+                                value="2021-06-06"
+                                hide-details=""/>
+                        </v-col>
+                        <v-col md="6">
+                            <v-text-field
+                                dense
+                                outlined
+                                label="Jumlah Aktual OR"
+                                prefix="Rp. "
+                                value="10000"
+                                hide-details=""/>
+                        </v-col>
+						<v-col md="6">
+							<v-text-field
+                                dense
+                                outlined
+                                label="Nominal Aktual OR"
+								type="number"
+                                value="2021-06-06"
+                                hide-details=""/>
+                        </v-col>
 						<v-col md="12">
                             <v-text-field
                                 dense
@@ -536,7 +572,7 @@
 							<p class="mb-0">Dikirim Via </p>
 							<v-radio-group
 								class="mt-0"
-								v-model="radioGroup">
+								>
 								<v-radio
 									label="Visit walk in"/>
 								<v-radio

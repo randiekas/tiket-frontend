@@ -163,7 +163,7 @@
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="B 154 IUX - Toyota Avanza"/>
 						<v-radio
@@ -509,7 +509,7 @@
 					<p class="mb-0">Status Dokumen</p>
 					<v-radio-group
 						class="mt-0"
-						v-model="radioGroup">
+						>
 						<v-radio
 							label="Dokumen Lengkap"/>
 						<v-radio
@@ -556,7 +556,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Save
+                    Submit
                 </v-btn>
                 </v-card-actions>
             </v-card>

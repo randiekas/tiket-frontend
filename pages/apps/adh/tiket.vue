@@ -153,7 +153,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Save
+                    Submit
                 </v-btn>
                 </v-card-actions>
             </v-card>

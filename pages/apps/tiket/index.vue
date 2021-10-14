@@ -6,8 +6,8 @@
 				title="Tiket"
 				subtitle="Kelola data tiket"
 				color="white--text">
-				<v-btn 
-					small 
+				<v-btn
+					small
 					class="white"
 					v-on:click="dialogFormTambah=true">
 					<v-icon left>
@@ -51,7 +51,7 @@
 					<v-card class="border--white blue darken-4" elevation="1" dark>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Tiket Open : 120 
+							Tiket Open : 120
 						</v-card-title>
 						<v-card-text>
 							<v-list-item dense>
@@ -101,9 +101,9 @@
 									</v-chip>
 								</v-list-item-icon>
 							</v-list-item>
-							<v-btn 
-								small 
-								block 
+							<v-btn
+								small
+								block
 								class="white black--text mt-3"
 								to="/apps/tiket">
 								Laporan Selengkapnya
@@ -273,9 +273,9 @@
 						</v-card-text>
 					</v-card>
 				</v-col>
-				
+
 			</v-row>
-			
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -460,13 +460,13 @@
 						color="blue darken-1"
 						text
 						@click="dialogFormTambah = false">
-						Save
+						Submit
 					</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>
-		
-		
+
+
 	</div>
 </template>
 <script>
@@ -501,7 +501,7 @@ export default {
 		}
 	},
 	data: () => ({
-		
+
     }),
 	mounted: function(){
 		if(this.tipe==='desa'){
@@ -509,7 +509,7 @@ export default {
 		}else if(this.tipe==='kecamatan'){
 			// this.handleUpdateDataKecamatan()
 		}
-		
+
 	},
 	methods:{
 		handleUpdateDataDesa: async function(){

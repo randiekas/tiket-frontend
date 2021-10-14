@@ -11,25 +11,25 @@
 					</v-icon>
 				</div>
 			</v-col>
-			
+
 			<v-col xs="12" md="7">
 				<v-card-title>TRAC Ls jabar</v-card-title>
 				<v-card-subtitle>Ticket Management - Unit Selesai Order</v-card-subtitle>
 				<v-card-text>
 					Gunakan akun google anda masuk ke aplikasi.
-					
+
 					<v-radio-group v-model="roleDipilih">
 						<v-radio
 							v-for="(item, index) in role"
 							:key="index"
-							:label="item.toUpperCase()"
+							:label="item=='driver'?'Driver/PDI':item.toUpperCase()"
 							:value="item"
 						></v-radio>
 					</v-radio-group>
 
 					<v-form ref="form">
 						<div class="text-right">
-							<v-btn 
+							<v-btn
 								v-on:click="handleSubmit"
 								color="primary">
 								<v-icon left>mdi-google</v-icon>
@@ -51,7 +51,7 @@ export default {
 	data () {
 		let user = this.$auth.user
 		if(user){
-			this.$router.push(`/apps/beranda`) 
+			this.$router.push(`/apps/beranda`)
 		}
 		return {
 			role: ['akun', 'sales', 'adh', 'bm', 'fdh', 'fleet', 'driver', 'admin'],

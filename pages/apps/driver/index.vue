@@ -169,6 +169,68 @@
                         </v-col>
 
                     </v-row>
+
+                    <v-row>
+                        <v-col md="12">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Pembebanan"
+                                v-model="pembebanan">
+
+								<v-radio
+									label="Ditagihkan"
+                                    value="ditagihkan"/>
+								<v-radio
+									label="Tidak Ditagihkan"
+                                    value="tidakditagihkan"/>
+
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="6">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Mekanisme Pembayaran">
+
+								<v-radio
+									label="Free OR (DriverTRAC)"/>
+								<v-radio
+									label="OR Invoice"/>
+                                <v-radio
+									label="OR Bayar Langsung"/>
+
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="6">
+                            <v-radio-group
+								hide-details=""
+								column
+								label="Pembayaran">
+
+								<v-card outlined flat>
+                                    <v-card-text>
+                                        BCA <br/>
+                                        4373041001 <br/>
+                                        a.n PT. SERASI AUTO RAYA <br/>
+                                    </v-card-text>
+                                </v-card>
+							</v-radio-group>
+                        </v-col>
+
+						<v-col md="12">
+							<v-textarea
+                                rows="2"
+								dense
+								outlined
+								label="Catatan"
+								hide-details=""/>
+						</v-col>
+
+					</v-row>
+
                     <p class="text-overline mt-4">
                         Detail Kejadian
                     </p>
@@ -316,6 +378,11 @@
                                 hide-details=""/>
                         </v-col>
                         <v-col md="12">
+                            <p class="text-overline mb-0 pb-0">
+                                Add Charge
+                            </p>
+                        </v-col>
+                        <v-col md="12">
 							<v-text-field
 								class="mt-4"
 								dense
@@ -325,19 +392,20 @@
 								hide-details="lampumerah al azhar..."
 								append-icon="mdi-delete-circle"/>
 						</v-col>
+                        <v-col md="12">
+							<v-file-input
+                                dense
+                                outlined
+                                label="Pilih File"
+                                hide-details=""/>
+						</v-col>
 						<v-col md="12" class="text-right">
 							<v-btn small>
 								Tambah
 							</v-btn>
 						</v-col>
-                    </v-row>
 
-                    <p class="text-overline mt-4">
-                        Add Charge
-                    </p>
-
-					<v-row>
-						<v-col md="6">
+                        <v-col md="6">
                             <v-text-field
                                 dense
                                 outlined
@@ -362,65 +430,12 @@
                                 label="Lampirkan Bukti Pembayaran"
                                 hide-details=""/>
                         </v-col>
+
                     </v-row>
 
-                    <v-row>
-                        <v-col md="12">
-                            <v-radio-group
-								hide-details=""
-								column
-								label="Pembebanan"
-                                v-model="pembebanan">
-
-								<v-radio
-									label="Ditagihkan"
-                                    value="ditagihkan"/>
-								<v-radio
-									label="Tidak Ditagihkan"
-                                    value="tidakditagihkan"/>
-
-							</v-radio-group>
-                        </v-col>
-
-						<v-col md="6">
-                            <v-radio-group
-								hide-details=""
-								column
-								label="Mekanisme Pembayaran">
-
-								<v-radio
-									label="Bayar Langsung (User/PIC)"/>
-								<v-radio
-									label="Invoice (Perusahaan)"/>
-
-							</v-radio-group>
-                        </v-col>
-
-						<v-col md="6">
-                            <v-radio-group
-								hide-details=""
-								column
-								label="Pembayaran">
-
-								<v-radio
-									label="Transfer"/>
-
-							</v-radio-group>
-                        </v-col>
-
-						<v-col md="12">
-							<v-textarea
-                                rows="2"
-								dense
-								outlined
-								label="Catatan"
-								hide-details=""/>
-						</v-col>
-
-					</v-row>
 
 					<p class="text-overline mt-4">
-                        Lampiran
+                        Lampiran Kelengkapan Dokumen
                     </p>
 
 					<v-file-input
@@ -483,7 +498,7 @@
                     text
                     @click="dialog = false"
                 >
-                    Save
+                    Submit
                 </v-btn>
                 </v-card-actions>
 			</v-card>
