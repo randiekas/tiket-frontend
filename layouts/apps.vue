@@ -74,8 +74,9 @@
 <script>
 export default {
 	data () {
-		let user = this.$auth.user
-		let tipe = this.$auth.$storage.getUniversal("loginType")
+		let user = this.$auth.$storage.getUniversal("akun")
+		console.log(user)
+		let tipe = user.tipe
 		if(!user){
 			this.$router.push(`/`) 
 		}
