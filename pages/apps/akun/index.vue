@@ -36,7 +36,7 @@
                         </v-col>
 						<v-col>
                             <v-text-field
-                                label="filterNama"
+                                label="Nama"
                                 v-model="filterNama"
                                 v-on:keyup.enter="handelLoadData"
                                 placeholder="Type Nama"
@@ -45,11 +45,11 @@
                         </v-col>
                         <v-col>
                             <v-select
-                                :items="dataTipe"
+                                :items="akunTipe"
                                 item-value='value'
                                 item-text='label'
                                 v-model="filterTipe"
-                                label="Status"
+                                label="Tipe Akun"
                                 hide-details=""/>
                         </v-col>
                         <v-col md="1">
@@ -83,8 +83,11 @@
                     <template v-slot:[`item.no`]="{ index }">
                         {{ numbering(index, options) }}
                     </template>
+                    <template v-slot:[`item.gambar`]="{ item }">
+                        <v-img :src="`${apiurl}/${item.gambar}`" max-width="31"/>
+                    </template>
                     <template v-slot:[`item.ttd`]="{ item }">
-                        <v-img :src="item.ttd" max-width="31"/>
+                        <v-img :src="`${apiurl}${item.ttd}`" max-width="31"/>
                     </template>
                     <template v-slot:[`item.terakhir_masuk`]="{ item }">
                         {{ $moment(item.end_date).format('DD/MM/YYYY') }}
@@ -105,22 +108,12 @@
 <script>
 export default {
 	layout: 'apps',
-	props: ['apps', 'handelKeluar' ,'access'],
+	props: ['apps', 'handelKeluar' ,'access', 'apiurl'],
     data: function(){
         return {
             filterEmail: '',
             filterNama: '',
             filterTipe: '',
-			dataTipe: [
-				{ value:'akun', label: 'akun' }, 
-				{ value:'sales', label: 'sales' }, 
-				{ value:'adh', label: 'adh' }, 
-				{ value:'bm', label: 'bm' }, 
-				{ value:'fdh', label: 'fdh' }, 
-				{ value:'fleet', label: 'fleet' }, 
-				{ value:'driver', label: 'driver' }, 
-				{ value:'admin', label: 'admin' }, 
-			],
             options: {page:1},
             isFetching: false,
             table:{
@@ -132,10 +125,10 @@ export default {
                         sortable: false,
                         value: 'no',
                     },
-                    { value: 'email', text: 'email' },
-                    { value: 'password', text: 'password' },
-                    { value: 'nama', text: 'nama' },
-                    { value: 'tipe', text: 'tipe' },
+                    { value: 'gambar', text: 'Avatar' },
+                    { value: 'email', text: 'Email' },
+                    { value: 'nama', text: 'Nama' },
+                    { value: 'tipe', text: 'Tipe' },
                     { value: 'ttd', text: 'ttd' },
                     { value: 'terakhir_masuk', text: 'terakhir_masuk' },
                 ],

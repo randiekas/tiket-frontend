@@ -13,6 +13,17 @@ export default function ({ $axios }, inject) {
 	inject('api', api)
 }
 
+Vue.prototype.akunTipe		= [
+	{ value:'akun', label: 'akun' }, 
+	{ value:'sales', label: 'sales' }, 
+	{ value:'adh', label: 'adh' }, 
+	{ value:'bm', label: 'bm' }, 
+	{ value:'fdh', label: 'fdh' }, 
+	{ value:'fleet', label: 'fleet' }, 
+	{ value:'driver', label: 'driver' }, 
+	{ value:'admin', label: 'admin' }, 
+]
+
 Vue.prototype.numbering = (index, options)=>{
     return (options.itemsPerPage*(options.page-1))+index+1
 }

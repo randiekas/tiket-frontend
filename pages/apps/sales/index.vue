@@ -20,7 +20,7 @@
 				<v-stepper-header>
 					<v-stepper-step step="1">
 						<v-btn to="/apps/sales" color="primary" small>
-							Import SKPK
+							Import UIC
 						</v-btn>
 					</v-stepper-step>
 
@@ -77,9 +77,9 @@
 					<v-card>
 						<v-card-title class="pb-0">
 							<v-icon left></v-icon>
-							Data SKPK
+							Data UIC
 							<v-spacer/>
-							<v-btn small class="mr-2">
+							<!-- <v-btn small class="mr-2">
 								<v-icon left>
 									mdi-microsoft-excel
 								</v-icon>
@@ -89,7 +89,15 @@
 								<v-icon left>
 									mdi-upload
 								</v-icon>
-								Import Excell
+								Import UIC
+							</v-btn> -->
+							<v-btn 
+								to="/apps/sales/uic"
+								small color="primary">
+								<v-icon left>
+									mdi-upload
+								</v-icon>
+								Import Data
 							</v-btn>
 						</v-card-title>
 						<v-divider class="mt-4"/>
