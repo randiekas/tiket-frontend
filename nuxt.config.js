@@ -1,9 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  server:{
-    host: '0.0.0.0',
-  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -65,8 +62,8 @@ export default {
 		},
 		strategies: {
 			google: {
-				// clientId: '459074254974-e0l81r9tif92osj98ksurom0jq9v4hcc.apps.googleusercontent.com',
-				clientId: '564028017740-p7es7i3bmudj1dt47me1hhpqnmnhp2sv.apps.googleusercontent.com',
+				clientId: '459074254974-e0l81r9tif92osj98ksurom0jq9v4hcc.apps.googleusercontent.com',
+				// clientId: '564028017740-p7es7i3bmudj1dt47me1hhpqnmnhp2sv.apps.googleusercontent.com',
 				scheme: 'oauth2',
 				endpoints: {
 					authorization: 'https://accounts.google.com/o/oauth2/auth',
