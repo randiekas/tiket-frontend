@@ -108,7 +108,7 @@
 <script>
 export default {
 	layout: 'apps',
-	props: ['apps', 'handelKeluar' ,'access', 'apiurl'],
+	props: ['apps', 'handelKeluar' , 'apiurl'],
     data: function(){
         return {
             filterEmail: '',
@@ -134,7 +134,6 @@ export default {
                 ],
                 data:[]
             },
-            category: [],
         }
     },
     mounted: async function(){
@@ -157,7 +156,7 @@ export default {
                 query.push(`email:like.${this.filterEmail}`)
             }
             if(this.filterNama){
-                query.push(`nama:date.${this.filterNama}`)
+                query.push(`nama:like.${this.filterNama}`)
             }
             if(this.filterTipe){
                 query.push(`tipe:${this.filterTipe}`)

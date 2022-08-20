@@ -110,7 +110,7 @@
 import readXlsxFile from 'read-excel-file'
 export default {
 	layout:'apps',
-	props: ['apps', 'tipe', 'handelKeluar'],
+	props: [ 'apps', 'tipe', 'handelKeluar', 'setConfirmation', 'setFetching', 'setSnackbar' ],
 	async asyncData({ }) {
 		return {
 			isFetching:false,
@@ -120,7 +120,7 @@ export default {
 		data: []
     }),
 	mounted: function(){
-
+		
 	},
 	methods:{
 		handelConfirmation: function( item ){
@@ -133,14 +133,14 @@ export default {
                     this.setConfirmation({ status: false })
 
                     this.setFetching(true)
-                    let payload         = Object.assign({}, this.detail)
+                    let payload         = Object.assign([], this.data)
 
-                    this.$api.$post('/v1/api/tambah/akun', payload).then((resp)=>{
+                    this.$api.$post('/v1/api/tambah_uic', payload).then((resp)=>{
 
                         this.setFetching(false)
                         if(resp.status){
                             this.setSnackbar('data hasben saved')
-                            this.$router.push('/apps/akun')
+                            this.$router.push('/apps/sales')
                         }else{
                             this.setSnackbar(resp.message)
                         }
@@ -169,18 +169,19 @@ export default {
             }
 
             event.target.value 			= ''
-
+			const akun					= this.$auth.$storage.getUniversal("akun")
+			const dibuat				= this.$moment().format('YYYY-MM-DD HH:mm:ss')
             readXlsxFile(xlsxfile, { sheet: "Sheet1", map }).then((rows) => {
 				
                 const error 			= false; 
                 const data   			= rows.rows.map((item)=>{
-
+					item.akun_id		= akun.id
 					item.mulai			= this.$moment(item.mulai).format('YYYY-MM-DD')
 					item.selesai		= this.$moment(item.selesai).format('YYYY-MM-DD')
+					item.dibuat			= dibuat
                     return item
                 })
 
-				console.log(data)
 				this.data				= data
                 this.error          	= error
             })

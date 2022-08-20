@@ -16,52 +16,7 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			<v-stepper alt-labels class="mb-8">
-				<v-stepper-header>
-					<v-stepper-step step="1">
-						<v-btn to="/apps/sales" color="primary" small>
-							Import UIC
-						</v-btn>
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="2">
-						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Buat tiket
-						</v-btn>
-
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-
-
-					<v-stepper-step step="3">
-						Approval BM
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval FDH
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="6">
-						Driver/PDI
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi FS
-					</v-stepper-step>
-
-				</v-stepper-header>
-			</v-stepper>
-
+			<my-alur/>
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
@@ -74,75 +29,112 @@
 					</v-card>
 				</v-col>
 				<v-col v-else cols="12" md="12">
-					<v-card>
-						<v-card-title class="pb-0">
-							<v-icon left></v-icon>
-							Data UIC
-							<v-spacer/>
-							<!-- <v-btn small class="mr-2">
-								<v-icon left>
-									mdi-microsoft-excel
-								</v-icon>
-								Download Format Import
-							</v-btn>
-							<v-btn small color="primary">
-								<v-icon left>
-									mdi-upload
-								</v-icon>
-								Import UIC
-							</v-btn> -->
-							<v-btn 
-								to="/apps/sales/uic"
-								small color="primary">
-								<v-icon left>
-									mdi-upload
-								</v-icon>
-								Import Data
-							</v-btn>
-						</v-card-title>
-						<v-divider class="mt-4"/>
-						<v-simple-table dense style="width:1500px;">
-							<thead>
-								<tr>
-									<th width="10px">No</th>
-									<th width="150px">Nomor Polisi</th>
-									<th>Tipe Kendaraan</th>
-									<th>No. Notif</th>
-									<th>No. Customer</th>
-									<th>Nama Customer</th>
-									<th>Nomor Kontrak</th>
-									<th>Mulai</th>
-									<th>Selesai</th>
-									<th>BCO</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr
-									v-for="(item, index) in 10"
-									:key="index">
-									<td>{{index+1}}</td>
-									<td>D8815FK</td>
-									<td>COLT-D FE 71 110PS 4B 4.0 MT D ABX 2019</td>
-									<td>810000202541</td>
-									<td>21099256</td>
-									<td>ANDIARTA MUZIZAT</td>
-									<td>2100101924</td>
-									<td>01/05/2021</td>
-									<td>30/04/2022</td>
-									<td>CICI</td>
-									<td>
-										<v-btn small icon>
-											<v-icon small>mdi-pencil</v-icon>
-										</v-btn>
-										<v-btn small icon>
-											<v-icon small>mdi-delete</v-icon>
-										</v-btn>
-									</td>
-								</tr>
+					<v-card class="mb-8">
+						<v-card-text>
+							<v-row dense>
+								<v-col>
+									<v-text-field
+										label="Nopol"
+										v-model="filterNopol"
+										v-on:keyup.enter="handelLoadData"
+										placeholder="Type here ..."
+										persistent-placeholder
+										hide-details=""/>
+								</v-col>
+								<v-col>
+									<v-text-field
+										label="Notif"
+										v-model="filterNotif"
+										v-on:keyup.enter="handelLoadData"
+										placeholder="Type here ..."
+										persistent-placeholder
+										hide-details=""/>
+								</v-col>
+								<v-col>
+									<v-text-field
+										label="No Cus"
+										v-model="filterNoCustomer"
+										v-on:keyup.enter="handelLoadData"
+										placeholder="Type here ..."
+										persistent-placeholder
+										hide-details=""/>
+								</v-col>
+								<v-col>
+									<v-text-field
+										label="Nama Cus"
+										v-model="filterNamaCustomer"
+										v-on:keyup.enter="handelLoadData"
+										placeholder="Type here ..."
+										persistent-placeholder
+										hide-details=""/>
+								</v-col>
+								<v-col>
+									<v-text-field
+										label="Selesai Kontrak"
+										v-model="filterSelesaiKontrak"
+										v-on:keyup.enter="handelLoadData"
+										type="date"
+										persistent-placeholder
+										hide-details=""/>
+								</v-col>
+								<v-col md="3" class="text-right">
+									<v-btn
+										@click="handelLoadData"
+										class="primary"
+										large
+										rounded>
+										<v-icon>
+											mdi-archive-search-outline
+										</v-icon>
+									</v-btn>
+									<v-btn 
+										large
+										rounded
+										to="/apps/sales/uic"
+										small color="primary">
+										<v-icon left>
+											mdi-upload
+										</v-icon>
+										Import Data
+									</v-btn>
+								</v-col>
+							</v-row>
+						</v-card-text>
+					</v-card>
 
-							</tbody>
-						</v-simple-table>
+					<v-card outlined>
+						<v-data-table
+							dense
+							:headers="table.header"
+							:items="table.data"
+							item-key="id"
+							@click:row="handelClickDetail"
+							disable-sort
+							:loading="isFetching"
+							:options.sync="options"
+							:server-items-length="table.count"
+							hide-default-footer="">
+							<template v-slot:[`item.no`]="{ index }">
+								{{ numbering(index, options) }}
+							</template>
+							<template v-slot:[`item.gambar`]="{ item }">
+								<v-img :src="`${apiurl}/${item.gambar}`" max-width="31"/>
+							</template>
+							<template v-slot:[`item.ttd`]="{ item }">
+								<v-img :src="`${apiurl}${item.ttd}`" max-width="31"/>
+							</template>
+							<template v-slot:[`item.terakhir_masuk`]="{ item }">
+								{{ $moment(item.end_date).format('DD/MM/YYYY') }}
+							</template>
+							<template v-slot:[`item.tipe`]="{ item }">
+								<v-chip v-if="item.status" small class="success">{{ item.tipe}}</v-chip>
+							</template>
+							<template v-slot:footer="{props}">
+								<my-dt-pagination
+									:options="options"
+									:pagination="props.pagination"/>
+							</template>
+						</v-data-table>
 					</v-card>
 				</v-col>
 
@@ -153,100 +145,85 @@
 <script>
 export default {
 	layout:'apps',
-	props: ['apps', 'tipe', 'handelKeluar'],
-	async asyncData({ }) {
-		return {
-			isFetching:false,
-            dasbor: {
-                "lahir": 0,
-                "mati": 0,
-                "keluar": 0,
-                "datang": 0,
-                "kk": 0,
-                "penduduk": 0,
-                "islam": 0,
-                "kristen": 0,
-                "khatolik": 0,
-                "hindu": 0,
-                "budha": 0,
-                "belum_kawin": 0,
-                "kawin_tercatat": 0,
-                "kawin_belum_tercatat": 0,
-                "cerai_mati": 0,
-                "dusun": 0,
-                "desa": 0,
-                "ganda": []
-            }
+	props: ['apps', 'handelKeluar' , 'apiurl'],
+	data: function(){
+        return {
+            filterNopol: '',
+            filterNotif: '',
+            filterNoCustomer: '',
+            filterNamaCustomer: '',
+            filterSelesaiKontrak: '',
+            options: {page:1},
+            isFetching: false,
+            table:{
+                count: 0,
+                header:[
+                    {
+                        text: 'No',
+                        align: 'center',
+                        sortable: false,
+                        value: 'no',
+                    },
+					{ value: 'no_polisi', text: 'NoPOL' },
+					{ value: 'tipe_kendaraan', text: 'Tipe' },
+					{ value: 'no_notif', text: 'No Notif' },
+					{ value: 'no_customer', text: 'No Cust' },
+					{ value: 'nama_customer', text: 'Nama Cust' },
+					{ value: 'no_kontrak', text: 'No Kontrak' },
+					{ value: 'mulai', text: 'Mulai' },
+					{ value: 'selesai', text: 'Selesai' },
+					{ value: 'bco', text: 'BCO' },
 
-		}
-	},
-	data: () => ({
-
-    }),
+                ],
+                data:[]
+            },
+        }
+    },
 	mounted: function(){
-		if(this.tipe==='desa'){
-			// this.handleUpdateDataDesa()
-		}else if(this.tipe==='kecamatan'){
-			// this.handleUpdateDataKecamatan()
-		}
-
+		
 	},
-	methods:{
-		handleUpdateDataDesa: async function(){
-			this.isFetching	= true
-			this.dasbor		= (await this.$api.$get(`/v1/api/dasborDesa`)).data
-			if(this.dasbor.belum_kawin===null){
-				this.dasbor	= {
-						"lahir": 0,
-						"mati": 0,
-						"keluar": 0,
-						"datang": 0,
-						"kk": 0,
-						"penduduk": 0,
-						"islam": 0,
-						"kristen": 0,
-						"khatolik": 0,
-						"hindu": 0,
-						"budha": 0,
-						"belum_kawin": 0,
-						"kawin_tercatat": 0,
-						"kawin_belum_tercatat": 0,
-						"cerai_mati": 0,
-						"dusun": this.dasbor.dusun,
-						"desa": this.dasbor.desa,
-						"ganda": []
-					}
-			}
-			this.isFetching	= false
-		},
-		handleUpdateDataKecamatan: async function(){
-			this.isFetching	= true
-			this.dasbor		= (await this.$api.$get(`/v1/api/dasborKecamatan`)).data
-			if(this.dasbor.belum_kawin===null){
-				this.dasbor	= {
-						"lahir": 0,
-						"mati": 0,
-						"keluar": 0,
-						"datang": 0,
-						"kk": 0,
-						"penduduk": 0,
-						"islam": 0,
-						"kristen": 0,
-						"khatolik": 0,
-						"hindu": 0,
-						"budha": 0,
-						"belum_kawin": 0,
-						"kawin_tercatat": 0,
-						"kawin_belum_tercatat": 0,
-						"cerai_mati": 0,
-						"dusun": this.dasbor.dusun,
-						"desa": this.dasbor.desa,
-						"ganda": []
-					}
-			}
-			this.isFetching	= false
-		}
-	}
+	watch:{
+        'options.page': function(){
+            this.handelLoadData()
+        },
+        'options.itemsPerPage': function(){
+            this.handelLoadData()
+        },
+    },
+	methods: {
+        handelLoadData: async function(){
+
+            this.isFetching     = true
+
+            let query           = []
+            if(this.filterNopol){
+                query.push(`no_polisi:like.${this.filterNopol}`)
+            }
+            if(this.filterNotif){
+				query.push(`no_notif:like.${this.filterNotif}`)
+            }
+			if(this.filterNoCustomer){
+                query.push(`no_customer:like.${this.filterNoCustomer}`)
+            }
+			if(this.filterNamaCustomer){
+                query.push(`nama_customer:like.${this.filterNamaCustomer}`)
+            }
+			if(this.filterSelesaiKontrak){
+                query.push(`selesai:date.${this.filterSelesaiKontrak}`)
+            }
+            if(query.length>0){
+                query           = `&query=${query.join(',')}`
+            }
+            const data          = (await this.$api.$get(`v1/api/data/uic?page=${this.options.page-1}&size=${this.options.itemsPerPage}${query}`)).data
+            this.table.data     = data.content
+            this.table.count    = eval(data.count)
+            this.isFetching     = false
+        },
+        handelClickDetail: function( item ){
+            // console.log(item)
+            // this.$router.push(`/content/${item.id}`);
+        }
+    }
 }
 </script>
 <style>
