@@ -131,6 +131,18 @@
 						disabled
                         />
 					<v-text-field
+						v-model="form.contract_start"
+                        label="Tanggal Mulai Kontrak "
+						type="date"
+                        required
+						persistent-placeholder
+						outlined
+						dense
+						placeholder="Tulis disini ..."
+						disabled
+						append-icon="mdi-calendar"
+                        />
+					<v-text-field
 						v-model="form.contract_end"
                         label="Tanggal Akhir Kontrak "
 						type="date"
@@ -142,6 +154,7 @@
 						disabled
 						append-icon="mdi-calendar"
                         />
+					
 
                     <v-text-field
                         label="PIC / User"
