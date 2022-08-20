@@ -77,18 +77,22 @@
 					<v-row>
 						<v-col md="5">
 							<v-text-field
+								v-model="form.nopol"
 								label="Nomor Polisi"
 								required
 								persistent-placeholder
 								outlined
 								dense
 								hint="Enter untuk mengambil data"
+								:error-messages="nopolMessage"
 								persistent-hint
+								v-on:keyup.enter="handelCari"
 								/>
 						</v-col>
 
 						<v-col md="7">
 							<v-text-field
+								v-model="form.tipe_kendaraan"
 								label="Tipe kendaraan"
 								required
 								persistent-placeholder
@@ -106,6 +110,7 @@
 					</v-row>
 
 					<v-text-field
+						v-model="form.customer_name"
 						class="mt-2"
 						label="Nama Customer"
 						required
@@ -116,6 +121,7 @@
 						disabled
 						/>
 					<v-text-field
+						v-model="form.contract_no"
                         label="NOMOR KONTRAK "
                         required
 						persistent-placeholder
@@ -125,6 +131,7 @@
 						disabled
                         />
 					<v-text-field
+						v-model="form.contract_end"
                         label="Tanggal Akhir Kontrak "
 						type="date"
                         required
@@ -341,6 +348,7 @@
 								</tr>
 							</thead>
 							<tbody>
+							<!-- 
 								<tr
 									v-for="(item, index) in 10"
 									:key="index">
@@ -364,6 +372,7 @@
 										</v-btn>
 									</td>
 								</tr>
+							!-->
 							</tbody>
 						</v-simple-table>
 					</v-card>
@@ -380,6 +389,8 @@ export default {
 	async asyncData({ }) {
 		return {
 			isFetching:false,
+			form:{},
+			nopolMessage: '',
             dasbor: {
                 "lahir": 0,
                 "mati": 0,
@@ -409,7 +420,7 @@ export default {
 			'Nomor Polisi',
 		]
     }),
-	mounted: function(){
+	mounted: async function(){
 		if(this.tipe==='desa'){
 			// this.handleUpdateDataDesa()
 		}else if(this.tipe==='kecamatan'){
@@ -482,6 +493,16 @@ export default {
 			}
 
 			return warna
+		},
+		handelCari: async function(){
+			this.nopolMessage	= ''
+			const skpk 			= await this.$content('skpk').where({ nopol: this.form.nopol }).fetch()
+			if(skpk.length==0){
+				this.nopolMessage	= 'nopol tidak temukan'
+			}else{
+				this.form		= skpk[0]
+			}
+			console.log(skpk)
 		}
 	}
 }

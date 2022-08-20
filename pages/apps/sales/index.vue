@@ -111,18 +111,18 @@
 							</thead>
 							<tbody>
 								<tr
-									v-for="(item, index) in 10"
+									v-for="(item, index) in skpk"
 									:key="index">
-									<td>{{index+1}}</td>
-									<td>D8815FK</td>
-									<td>COLT-D FE 71 110PS 4B 4.0 MT D ABX 2019</td>
-									<td>810000202541</td>
-									<td>21099256</td>
-									<td>ANDIARTA MUZIZAT</td>
-									<td>2100101924</td>
-									<td>01/05/2021</td>
-									<td>30/04/2022</td>
-									<td>CICI</td>
+									<td>{{ item.no }}</td>
+									<td>{{ item.nopol }}</td>
+									<td>{{ item.tipe_kendaraan }}</td>
+									<td>{{ item.notif }}</td>
+									<td>{{ item.customer_no }}</td>
+									<td>{{ item.customer_name }}</td>
+									<td>{{ item.contract_no }}</td>
+									<td>{{ item.contract_start }}</td>
+									<td>{{ item.contract_end}}</td>
+									<td>{{ item.bo }}</td>
 									<td>
 										<v-btn small icon>
 											<v-icon small>mdi-pencil</v-icon>
@@ -146,8 +146,10 @@
 export default {
 	layout:'apps',
 	props: ['apps', 'tipe', 'handelKeluar'],
-	async asyncData({ }) {
+	async asyncData({ $content }) {
+		const skpk = await $content('skpk').fetch()
 		return {
+			skpk,
 			isFetching:false,
             dasbor: {
                 "lahir": 0,
@@ -175,7 +177,7 @@ export default {
 	data: () => ({
 
     }),
-	mounted: function(){
+	mounted: async function(){
 		if(this.tipe==='desa'){
 			// this.handleUpdateDataDesa()
 		}else if(this.tipe==='kecamatan'){
