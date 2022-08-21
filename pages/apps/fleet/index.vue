@@ -108,22 +108,22 @@
 							</thead>
 							<tbody>
 								<tr
-									v-for="(item, index) in 10"
+									v-for="(item, index) in skpk"
 									:key="index">
 									<td>{{index+1}}</td>
 									<td>
 										<v-chip small dark color="green">
-											810000210343
+											{{ item.notif }}
 										</v-chip>
 									</td>
-									<td>C2MFG INDONESIA</td>
-									<td>B1541UIZ</td>
+									<td>{{ item.customer_name }}</td>
+									<td>{{ item.nopol }}</td>
                                     <td>IBU FIRA</td>
 									<td>081298179643</td>
-									<td>30/04/2022</td>
-									<td>30/04/2022</td>
+									<td>{{ item.contract_end }}</td>
+									<td>30/09/2022</td>
                                     <td>Kontrak Berakhir</td>
-									<td>CICI</td>
+									<td>{{ item.bo }}</td>
 									<td>
 										<v-btn
 											v-on:click="dialog=true"
@@ -351,8 +351,10 @@
 export default {
 	layout:'apps',
 	props: ['apps', 'tipe', 'handelKeluar'],
-	async asyncData({ }) {
+	async asyncData({ $content }) {
+		const skpk = await $content('skpk').fetch()
 		return {
+			skpk,
 			dialog:false,
 			isFetching:false,
             dasbor: {

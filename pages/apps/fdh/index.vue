@@ -147,6 +147,7 @@ export default {
 	async asyncData({ $content }) {
 		const skpk = await $content('skpk').fetch()
 		return {
+			skpk,
 			isFetching:false,
             dasbor: {
                 "lahir": 0,
