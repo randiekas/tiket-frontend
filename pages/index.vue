@@ -16,38 +16,27 @@
 				<v-card-title>TRAC Ls jabar</v-card-title>
 				<v-card-subtitle>Ticket Management - Unit Selesai Order</v-card-subtitle>
 				<v-card-text>
-					<v-alert v-if="pesan" type="error">{{ pesan }}</v-alert>
-					<form @submit.prevent="handelMasuk">
-						<v-text-field
-							v-model="form.email"
-							label="Email"
-							placeholder="user@gmail.com"
-							type="email"
-							required
-							persistent-placeholder/>
-						<v-text-field
-							v-model="form.password"
-							label="Password"
-							placeholder="xxxxxx"
-							type="password"
-							required
-							persistent-placeholder/>
-						<v-btn
-							:disabled="isFetching"
-							class="mb-4"
-							color="primary"
-							type="submit"
-							block>
-							{{ isFetching?'Memproses ...': 'Masuk'}}
-						</v-btn>
-						<v-btn
-							type="button"
-							v-on:click="handleSubmit"
-							block>
-							<v-icon left>mdi-google</v-icon>
-							Driver, Masuk dengan google
-						</v-btn>
-					</form>
+					Gunakan akun google anda masuk ke aplikasi.
+
+					<v-radio-group v-model="roleDipilih">
+						<v-radio
+							v-for="(item, index) in role"
+							:key="index"
+							:label="item=='driver'?'Driver/PDI':item.toUpperCase()"
+							:value="item"
+						></v-radio>
+					</v-radio-group>
+
+					<v-form ref="form">
+						<div class="text-right">
+							<v-btn
+								v-on:click="handleSubmit"
+								color="primary">
+								<v-icon left>mdi-google</v-icon>
+								Masuk
+							</v-btn>
+						</div>
+					</v-form>
 				</v-card-text>
 			</v-col>
 			</v-row>
@@ -65,35 +54,11 @@ export default {
 			this.$router.push(`/apps/beranda`)
 		}
 		return {
-			pesan: '',
-			isFetching: false,
-			form: {
-				email: '',
-				password: '',
-			},
 			role: ['akun', 'sales', 'adh', 'bm', 'fdh', 'fleet', 'driver', 'admin'],
-			roleDipilih: 'fleet',
+			roleDipilih: 'sales',
 		}
 	},
 	methods:{
-		handelMasuk: function(){
-			this.pesan			= ""
-			this.isFetching		= true
-			this.$api.$post('/v1/akun/masuk', this.form).then((resp)=>{
-				this.isFetching	= false
-				if(resp.status){
-
-					const token 		= `Bearer ${resp.data.token}`
-					const tipe			= resp.data.akun.tipe
-					this.$auth.$storage.setUniversal("authToken", token)
-					this.$auth.$storage.setUniversal("akun", resp.data.akun)
-        			window.location.href='/apps/'+tipe
-				}else{
-					this.pesan	= resp.message
-				}
-			})
-			return false
-		},
 		handleSubmit:function(){
 			this.error = null
 			this.$auth.$storage.setUniversal("loginType", this.roleDipilih)

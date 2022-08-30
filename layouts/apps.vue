@@ -143,9 +143,9 @@
 <script>
 export default {
 	data () {
-		let user = this.$auth.$storage.getUniversal("akun")
-		console.log(user)
-		let tipe = user.tipe
+		let user 		= this.$auth.$storage.getUniversal("akun")
+		user.picture	= `${process.env.API_URL}${user.gambar}`
+		let tipe 		= user.tipe
 		if(!user){
 			this.$router.push(`/`) 
 		}

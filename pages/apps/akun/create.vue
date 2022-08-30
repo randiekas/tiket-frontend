@@ -1,18 +1,26 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="grey lighten-4 fill-height mb-16" v-if="access.create">
 =======
     <div class="grey lighten-4 fill-height mb-16">
 >>>>>>> update lagi
+=======
+    <div class="grey lighten-4 fill-height mb-16">
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
 		<div class="primary pb-16">
 			<v-container>
 				<Head
 					title="Create"
 <<<<<<< HEAD
+<<<<<<< HEAD
 					subtitle="Create your Content data">
 =======
 					subtitle="Create akun">
 >>>>>>> update lagi
+=======
+					subtitle="Create akun">
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
                     <div>
                         <v-btn
                             exact
@@ -29,10 +37,14 @@
                             small
                             class="white"
 <<<<<<< HEAD
+<<<<<<< HEAD
                             to="/content">
 =======
                             to="/apps/akun">
 >>>>>>> update lagi
+=======
+                            to="/apps/akun">
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
                             <v-icon left>
                                 mdi-chevron-left
                             </v-icon>
@@ -48,6 +60,7 @@
 		<v-container class="mt-n16">
             <v-row>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <v-col md="6">
                     <v-card>
                         <v-card-title>
@@ -58,6 +71,10 @@
                 <v-col class="mx-auto my-auto" xs="12" md="5" style="justify-content:center">
                     <v-card>
 >>>>>>> update lagi
+=======
+                <v-col class="mx-auto my-auto" xs="12" md="5" style="justify-content:center">
+                    <v-card>
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
                         <v-card-text>
                             <my-form
                                 :fields="fieldsContent"
@@ -65,6 +82,7 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <v-col md="6">
                     <v-card>
@@ -145,6 +163,8 @@
                 </v-col>
 =======
 >>>>>>> update lagi
+=======
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
             </v-row>
 
 		</v-container>
@@ -153,31 +173,31 @@
 <script>
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    layout: 'apps',
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
 	props: [ 'setConfirmation', 'setSnackbar', 'setFetching', 'access' ],
     data: function(){
         return {
-            productSelected: [],
             fieldsContent: [
-                { text:'Title', value: 'title'},
-                { text:'Description', value: 'description', type: 'textarea'},
-                { text:'Start Period', value: 'start_date', type:'date', col:6},
-                { text:'End Period', value: 'end_date', type:'date', col:6},
-                { text:'Url/Reference', value: 'url_reference'},
-                { text:'Images', value: 'img_path', type: 'file'},
-                { text:'Categori', value: 'content_category_id', type:'select', options: []},
+                { value: 'email', text: 'Email'},
+                { value: 'password', text: 'Password'},
+                { value: 'nama', text: 'Nama'},
+                { value: 'gambar', text: 'Avatar', type: 'file'},
+                { value: 'tipe', text: 'Tipe', type:'select', options: this.akunTipe},
+                { value: 'ttd', text: 'TTD', type: 'file'},
             ],
 
             detail:{
-                title: '',
-                description: '',
-                start_date: '',
-                end_date: '',
-                url_reference: '',
-                content_category_id: '',
-                img_path: '',
-                product_id: [],
-                product_id_delete: [],
+                email: '',
+                password: '',
+                nama: '',
+                gambar: '',
+                ttd: '',
+                tipe: ''
             },
+<<<<<<< HEAD
 
             product: [],
             category: [],
@@ -204,6 +224,8 @@ export default {
                 tipe: ''
             },
 >>>>>>> update lagi
+=======
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
         }
     },
     mounted: function(){
@@ -211,6 +233,7 @@ export default {
     },
     methods: {
         handelLoadData: async function(){
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.product    = (await this.$api.$get('admin/product/product?page=0&size=10000&query=status:1')).data.content
             this.category   = (await this.$api.$get('admin/foundation/lookup-line?page=0&size=1000&query=lookup_header_id:98,lookup_line.status:1')).data.content.map((item)=>{
@@ -222,6 +245,8 @@ export default {
             this.fieldsContent[6].options   = this.category
 =======
 >>>>>>> update lagi
+=======
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
 
         },
         handelConfirmation: function( item ){
@@ -235,6 +260,7 @@ export default {
                     this.setFetching(true)
                     let payload         = Object.assign({}, this.detail)
 <<<<<<< HEAD
+<<<<<<< HEAD
                     payload.product_id  = this.productSelected.map((item)=>this.product[item].id)
 
 
@@ -243,15 +269,23 @@ export default {
 
                     this.$api.$post('/v1/api/tambah/akun', payload).then((resp)=>{
 >>>>>>> update lagi
+=======
+
+                    this.$api.$post('/v1/api/tambah/akun', payload).then((resp)=>{
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
 
                         this.setFetching(false)
                         if(resp.status){
                             this.setSnackbar('data hasben saved')
 <<<<<<< HEAD
+<<<<<<< HEAD
                             this.$router.push('/content')
 =======
                             this.$router.push('/apps/akun')
 >>>>>>> update lagi
+=======
+                            this.$router.push('/apps/akun')
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
                         }else{
                             this.setSnackbar(resp.message)
                         }
@@ -260,6 +294,7 @@ export default {
             })
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         handelDeleteProductSelected: function(index){
 
             this.productSelected.splice(index,1)
@@ -267,6 +302,8 @@ export default {
         }
 =======
 >>>>>>> update lagi
+=======
+>>>>>>> 8ef8a0dcf63d1b2463e789ea5e187ad855c7e64b
     }
 }
 </script>
