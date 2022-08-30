@@ -16,58 +16,15 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			<v-stepper alt-labels class="mb-8">
-				<v-stepper-header>
-					<v-stepper-step step="1">
-						<v-btn to="/apps/sales" color="primary" small>
-							Import SKPK
-						</v-btn>
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="2">
-						<v-btn to="/apps/sales/tiket" color="primary" small>
-							Buat tiket
-						</v-btn>
-
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="3">
-						Approval BM
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="4">
-						Approval ADH
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="5">
-						Approval FDH
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="6">
-						Driver/PDI
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-					<v-stepper-step step="7">
-						Verifikasi FS
-					</v-stepper-step>
-
-				</v-stepper-header>
-			</v-stepper>
+			<my-alur/>
 
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
             <v-dialog
-            v-model="dialog"
-            persistent
-            max-width="600px"
-            >
+				v-model="dialog"
+				persistent
+				max-width="600px">
             <v-card>
                 <v-card-title>
                 <span class="text-h5">Buat Tiket</span>
