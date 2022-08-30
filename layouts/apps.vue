@@ -1,5 +1,70 @@
 <template>
 	<v-app>
+		<v-dialog
+			v-model="isFetching"
+			persistent
+			width="300">
+			<v-card
+				color="primary"
+				dark>
+				<v-card-text>
+					Sedang diproses ...
+					<v-progress-linear
+						indeterminate
+						color="white"
+						class="mb-0"
+					></v-progress-linear>
+				</v-card-text>
+			</v-card>
+		</v-dialog>
+
+		<v-snackbar
+			top
+			right
+			v-if="snackbar!==false"
+			v-model="snackbar.status"
+			timeout="2000">
+			{{ snackbar.message }}
+			<template v-slot:action="{ attrs }">
+				<v-btn
+				color="red"
+				text
+				v-bind="attrs"
+				@click="snackbar = false">
+				Close
+				</v-btn>
+			</template>
+
+		</v-snackbar>
+
+		<v-dialog
+			v-model="confirmation.status"
+			persistent
+			width="450">
+			<v-card
+				color="primary"
+				dark>
+				<v-card-title>{{ confirmation.title }}</v-card-title>
+				<v-card-text>
+					{{ confirmation.message }}
+				</v-card-text>
+				<v-card-actions>
+					<v-spacer/>
+					<v-btn
+						text
+						@click="confirmation.status=false">
+						Cancel
+					</v-btn>
+					<v-btn
+						outlined
+						@click="confirmation.handelOk(); confirmation.status=false">
+						Continue
+					</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
+
+
 		<v-navigation-drawer
 			permanent
 			expand-on-hover
@@ -65,7 +130,11 @@
 			<nuxt-child
                 :apps="apps[tipe]"
 				:tipe="tipe"
-				:handelKeluar="handelKeluar"/>
+				:setSnackbar="setSnackbar"
+				:setFetching="setFetching"
+				:setConfirmation="setConfirmation"
+				:handelKeluar="handelKeluar"
+				:apiurl="apiurl"/>
 			
 		</v-main>
 	</v-app>
@@ -83,6 +152,18 @@ export default {
 		return {
 			user,
 			tipe,
+			apiurl:process.env.API_URL,
+			isFetching: false,
+            snackbar: {
+                status: false,
+                message: ''
+            },
+			confirmation: {
+                status: false,
+                title: '',
+                message: '',
+                handelOk: ()=>{},
+            },
 			apps:{
 				'sales': [
 					{
@@ -142,6 +223,34 @@ export default {
 		}
 	},
 	methods:{
+		setSnackbar: function (message){this.snackbar={status: true, message}},
+		setFetching: function (status){this.isFetching=status},
+		setConfirmation: function (item){this.confirmation=item},
+		handelKeluar: function(){
+			const redirect	= redirect
+			this.setConfirmation({
+                status: true,
+                title: 'Continue',
+                message: `Are you sure you want to logut?`,
+                handelOk: async ()=>{
+                    this.setConfirmation({ status: false })
+
+                    this.setFetching(true)
+                    this.$api.$post(`foundation/logout`).then(async (resp)=>{
+
+                        this.setFetching(false)
+                        if(resp.status){
+                            await localStorage.removeItem("access_token")
+                            await localStorage.removeItem("name")
+                            await localStorage.removeItem("email")
+							window.location.reload()
+                        }else{
+                            this.setSnackbar(resp.message)
+                        }
+                    })
+                }
+            })
+		},
 		handelKeluar: async function(){
             await this.$auth.logout()
         }

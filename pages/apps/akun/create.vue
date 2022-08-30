@@ -1,10 +1,18 @@
 <template>
+<<<<<<< HEAD
     <div class="grey lighten-4 fill-height mb-16" v-if="access.create">
+=======
+    <div class="grey lighten-4 fill-height mb-16">
+>>>>>>> update lagi
 		<div class="primary pb-16">
 			<v-container>
 				<Head
 					title="Create"
+<<<<<<< HEAD
 					subtitle="Create your Content data">
+=======
+					subtitle="Create akun">
+>>>>>>> update lagi
                     <div>
                         <v-btn
                             exact
@@ -20,7 +28,11 @@
                             exact
                             small
                             class="white"
+<<<<<<< HEAD
                             to="/content">
+=======
+                            to="/apps/akun">
+>>>>>>> update lagi
                             <v-icon left>
                                 mdi-chevron-left
                             </v-icon>
@@ -35,12 +47,17 @@
 		</div>
 		<v-container class="mt-n16">
             <v-row>
+<<<<<<< HEAD
                 <v-col md="6">
                     <v-card>
                         <v-card-title>
                             Content
                         </v-card-title>
                         <v-divider/>
+=======
+                <v-col class="mx-auto my-auto" xs="12" md="5" style="justify-content:center">
+                    <v-card>
+>>>>>>> update lagi
                         <v-card-text>
                             <my-form
                                 :fields="fieldsContent"
@@ -48,6 +65,7 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
+<<<<<<< HEAD
                 <v-col md="6">
                     <v-card>
                         <v-card-title>
@@ -125,6 +143,8 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
+=======
+>>>>>>> update lagi
             </v-row>
 
 		</v-container>
@@ -132,6 +152,7 @@
 </template>
 <script>
 export default {
+<<<<<<< HEAD
 	props: [ 'setConfirmation', 'setSnackbar', 'setFetching', 'access' ],
     data: function(){
         return {
@@ -160,6 +181,29 @@ export default {
 
             product: [],
             category: [],
+=======
+    layout: 'apps',
+	props: [ 'setConfirmation', 'setSnackbar', 'setFetching', 'access' ],
+    data: function(){
+        return {
+            fieldsContent: [
+                { value: 'email', text: 'Email'},
+                { value: 'password', text: 'Password'},
+                { value: 'nama', text: 'Nama'},
+                { value: 'gambar', text: 'Avatar', type: 'file'},
+                { value: 'tipe', text: 'Tipe', type:'select', options: this.akunTipe},
+                { value: 'ttd', text: 'TTD', type: 'file'},
+            ],
+
+            detail:{
+                email: '',
+                password: '',
+                nama: '',
+                gambar: '',
+                ttd: '',
+                tipe: ''
+            },
+>>>>>>> update lagi
         }
     },
     mounted: function(){
@@ -167,6 +211,7 @@ export default {
     },
     methods: {
         handelLoadData: async function(){
+<<<<<<< HEAD
             this.product    = (await this.$api.$get('admin/product/product?page=0&size=10000&query=status:1')).data.content
             this.category   = (await this.$api.$get('admin/foundation/lookup-line?page=0&size=1000&query=lookup_header_id:98,lookup_line.status:1')).data.content.map((item)=>{
                 return {
@@ -175,6 +220,8 @@ export default {
                 }
             })
             this.fieldsContent[6].options   = this.category
+=======
+>>>>>>> update lagi
 
         },
         handelConfirmation: function( item ){
@@ -187,15 +234,24 @@ export default {
 
                     this.setFetching(true)
                     let payload         = Object.assign({}, this.detail)
+<<<<<<< HEAD
                     payload.product_id  = this.productSelected.map((item)=>this.product[item].id)
 
 
                     this.$api.$post('admin/content/content', payload).then((resp)=>{
+=======
+
+                    this.$api.$post('/v1/api/tambah/akun', payload).then((resp)=>{
+>>>>>>> update lagi
 
                         this.setFetching(false)
                         if(resp.status){
                             this.setSnackbar('data hasben saved')
+<<<<<<< HEAD
                             this.$router.push('/content')
+=======
+                            this.$router.push('/apps/akun')
+>>>>>>> update lagi
                         }else{
                             this.setSnackbar(resp.message)
                         }
@@ -203,11 +259,14 @@ export default {
                 }
             })
         },
+<<<<<<< HEAD
         handelDeleteProductSelected: function(index){
 
             this.productSelected.splice(index,1)
             // console.log(this.productSelected)
         }
+=======
+>>>>>>> update lagi
     }
 }
 </script>
