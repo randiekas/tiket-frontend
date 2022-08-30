@@ -1,4 +1,4 @@
-# Ticketing
+# Ticketing.
 
 ## Build Setup
 
