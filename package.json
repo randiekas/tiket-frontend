@@ -1,5 +1,5 @@
 {
-  "name": "ticketing",
+  "name": "Ticketing",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,6 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
-    "read-excel-file": "^5.3.4",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
