@@ -168,15 +168,15 @@ export default {
 				'sales': [
 					{
 						"ikon": "mdi-table-large",
-						"nama":"Data SKPK",
+						"nama":"Data UIC",
 						"deskripsi":"Kelola lengkap data SKPK",
-						"link":"/apps/skpk"
+						"link":"/apps/sales"
 					},
 					{
 						"ikon": "mdi-car-arrow-left",
-						"nama":"Tiket SKPK",
+						"nama":"Data Tiket",
 						"deskripsi":"Kelola lengkap tiket SKPK",
-						"link":"/apps/tiket"
+						"link":"/apps/sales/tiket"
 					},
 				],
 				'desa': [

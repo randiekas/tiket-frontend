@@ -21,15 +21,9 @@
 		</div>
 		<v-container class="mt-n16">
 			<v-row class="mt-2 mt-n8">
-				<v-col v-if="isFetching" sm="12" md="12" cols="12">
-					<v-card>
-						<v-skeleton-loader
-							class="mx-auto"
-							type="article, table-heading"/>
-					</v-card>
-				</v-col>
-				<v-col v-else cols="12" md="12">
-					<v-card class="mb-8">
+				<v-col md="12">
+				<v-card>
+						<v-card-title>Data UIC</v-card-title>
 						<v-card-text>
 							<v-row dense>
 								<v-col>
@@ -101,7 +95,15 @@
 							</v-row>
 						</v-card-text>
 					</v-card>
-
+				</v-col>
+				<v-col v-if="isFetching" sm="12" md="12" cols="12">
+					<v-card>
+						<v-skeleton-loader
+							class="mx-auto"
+							type="article, table-heading"/>
+					</v-card>
+				</v-col>
+				<v-col v-else cols="12" md="12">
 					<v-card outlined>
 						<v-data-table
 							dense
@@ -164,7 +166,7 @@ export default {
                         sortable: false,
                         value: 'no',
                     },
-					{ value: 'no_polisi', text: 'NoPOL' },
+					{ value: 'no_polisi', text: 'No Pol' },
 					{ value: 'tipe_kendaraan', text: 'Tipe' },
 					{ value: 'no_notif', text: 'No Notif' },
 					{ value: 'no_customer', text: 'No Cust' },

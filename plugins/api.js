@@ -24,6 +24,15 @@ Vue.prototype.akunTipe		= [
 	{ value:'admin', label: 'admin' }, 
 ]
 
+Vue.prototype.alasanPenarikan	= [
+	'Kontrak selesai',
+	'AR Bermasalah',
+	'Early Termination',
+	'Pass Maintenance Check',
+	'Late unit return',
+	'GT',
+]
+
 Vue.prototype.numbering = (index, options)=>{
     return (options.itemsPerPage*(options.page-1))+index+1
 }
