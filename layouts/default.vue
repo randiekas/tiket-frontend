@@ -115,3 +115,9 @@ export default {
   }
 }
 </script>
+<style>
+  table{
+    width: 1470px!important;
+  }
+</style>
+  

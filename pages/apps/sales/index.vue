@@ -1,5 +1,6 @@
 <template>
 	<div class="grey lighten-4 fill-height mb-16">
+		<my-cetak :detail="detail" :dialogCetak="dialogCetak"/>
 		<div class="primary pb-16">
 		<v-container>
 			<Head
@@ -16,86 +17,288 @@
 					Keluar Aplikasi
 				</v-btn>
 			</Head>
-			<my-alur/>
+			<my-alur tipe="sales"/>
+
 		</v-container>
 		</div>
 		<v-container class="mt-n16">
+            <v-dialog
+				v-model="dialog"
+				persistent
+				max-width="600px">
+				<v-card>
+					<v-card-title>
+					<span class="text-h5">Buat Tiket</span>
+					</v-card-title>
+					<v-card-text>
+					<v-container>
+						<v-row>
+							<v-col md="5">
+								<v-text-field
+									v-model="uic.no_polisi"
+									label="Nomor Polisi"
+									required
+									persistent-placeholder
+									outlined
+									dense
+									hint="Enter untuk mengambil data"
+									:error-messages="nopolMessage"
+									persistent-hint
+									v-on:keyup.enter="handelCari"
+									/>
+							</v-col>
+
+							<v-col md="7">
+								<v-text-field
+									v-model="uic.tipe_kendaraan"
+									label="Tipe kendaraan"
+									required
+									persistent-placeholder
+									outlined
+									dense
+									persistent-hint
+									disabled
+									/>
+							</v-col>
+							<!--
+							<v-col md="12" class="text-right">
+								<v-btn small>
+									Tambah Nopol
+								</v-btn>
+							</v-col>
+							!-->
+						</v-row>
+
+						<v-text-field
+							v-model="form.customer_nama"
+							class="mt-2"
+							label="Nama Customer"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							persistent-hint
+							disabled
+							/>
+						<v-text-field
+							v-model="uic.no_kontrak"
+							label="NOMOR KONTRAK "
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							disabled
+							/>
+						<v-text-field
+							v-model="form.kontrak_selesai"
+							label="Tanggal Akhir Kontrak "
+							type="date"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							disabled
+							append-icon="mdi-calendar"
+							/>
+
+						<v-text-field
+							v-model="form.pic_nama"
+							label="PIC / User"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<v-text-field
+							v-model="form.pic_jabatan"
+							label="Jabatan / Bagian"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<v-text-field
+							v-model="form.pic_telepon"
+							type="number"
+							label="No Telepon / hp"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<p class="mb-0">Status Penarikan</p>
+						<v-radio-group 
+							v-model="form.penarikan_status"
+							class="mt-0">
+							<v-radio
+								label="Unit diambil"/>
+							<v-radio
+								label="Customer antar ke pool"/>
+						</v-radio-group>
+
+						<v-text-field
+							v-model="form.penarikan_alamat"
+							label="Alamat penarikan/serahterima kendaraan"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<p>Jadwal Penarikan</p>
+						<v-text-field
+							v-model="form.penarikan_tanggal"
+							label="Tanggal penarikan/serahterima kendaraan"
+							type="date"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+						<v-text-field
+							v-model="form.penarikan_waktu"
+							label="Waktu penarikan/serahterima kendaraan"
+							type="time"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<p class="mb-0">Alasan Penarikan</p>
+						<v-radio-group 
+							v-model="form.penarikan_alasan"
+							class="mt-0">
+							<v-radio
+								v-for="(item, index) in alasanPenarikan"
+								:key="index"
+								:label="item"/>
+						</v-radio-group>
+						<v-text-field
+							v-model="form.lain_lain"
+							label="Lain-lain"
+							required
+							persistent-placeholder
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<v-text-field
+							v-model="form.terlambat_alasan"
+							label="Alasan Keterlambatan"
+							required
+							persistent-placeholder
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+
+					</v-container>
+					<small>*indicates required field</small>
+					</v-card-text>
+					<v-card-actions>
+					<v-spacer></v-spacer>
+					<v-btn
+						color="blue darken-1"
+						text
+						@click="dialog = false"
+					>
+						Close
+					</v-btn>
+					<v-btn
+						color="blue darken-1"
+						text
+						@click="handelConfirmation"
+					>
+						Submit
+					</v-btn>
+					</v-card-actions>
+				</v-card>
+            </v-dialog>
 			<v-row class="mt-2 mt-n8">
 				<v-col md="12">
-				<v-card>
-						<v-card-title>Data UIC</v-card-title>
-						<v-card-text>
-							<v-row dense>
-								<v-col>
-									<v-text-field
-										label="Nopol"
-										v-model="filterNopol"
-										v-on:keyup.enter="handelLoadData"
-										placeholder="Type here ..."
-										persistent-placeholder
-										hide-details=""/>
-								</v-col>
-								<v-col>
-									<v-text-field
-										label="Notif"
-										v-model="filterNotif"
-										v-on:keyup.enter="handelLoadData"
-										placeholder="Type here ..."
-										persistent-placeholder
-										hide-details=""/>
-								</v-col>
-								<v-col>
-									<v-text-field
-										label="No Cus"
-										v-model="filterNoCustomer"
-										v-on:keyup.enter="handelLoadData"
-										placeholder="Type here ..."
-										persistent-placeholder
-										hide-details=""/>
-								</v-col>
-								<v-col>
-									<v-text-field
-										label="Nama Cus"
-										v-model="filterNamaCustomer"
-										v-on:keyup.enter="handelLoadData"
-										placeholder="Type here ..."
-										persistent-placeholder
-										hide-details=""/>
-								</v-col>
-								<v-col>
-									<v-text-field
-										label="Selesai Kontrak"
-										v-model="filterSelesaiKontrak"
-										v-on:keyup.enter="handelLoadData"
-										type="date"
-										persistent-placeholder
-										hide-details=""/>
-								</v-col>
-								<v-col md="3" class="text-right">
-									<v-btn
-										@click="handelLoadData"
-										class="primary"
-										large
-										rounded>
-										<v-icon>
-											mdi-archive-search-outline
-										</v-icon>
-									</v-btn>
-									<v-btn 
-										large
-										rounded
-										to="/apps/sales/uic"
-										small color="primary">
-										<v-icon left>
-											mdi-upload
-										</v-icon>
-										Import Data
-									</v-btn>
-								</v-col>
-							</v-row>
-						</v-card-text>
+					<v-card>
+						<v-card-title class="pb-0">
+							<v-icon left></v-icon>
+							Data Tiket
+							<v-spacer/>
+							<v-btn small color="primary" v-on:click="dialog=true" class="mr-2" rounded>
+								<v-icon left>
+									mdi-plus
+								</v-icon>
+								Buat Tiket
+							</v-btn>
+							<v-btn small color="primary" rounded>
+								<v-icon left>
+									mdi-microsoft-excel
+								</v-icon>
+								Download tiket list
+							</v-btn>
+						</v-card-title>
+						<v-container class="pb-0">
+						<v-row>
+							<v-col md="3">
+								<v-text-field
+									v-model="filterCustomerNama"
+									v-on:keyup.enter="handelLoadData"
+									label="Nama Customer"
+									outlined
+									hide-details=""
+									dense/>
+							</v-col>
+							<v-col md="3">
+								<v-text-field
+									v-model="filterNoPolisi"
+									v-on:keyup.enter="handelLoadData"
+									label="Nomor Polisi"
+									outlined
+									hide-details=""
+									dense/>
+							</v-col>
+							<v-col md="4">
+								<v-chip-group>
+									<v-chip small dark color="deep-purple lighten-1">
+										Open
+									</v-chip>
+									<v-chip small dark color="cyan accent-4">
+										Inprogress
+									</v-chip>
+									<v-chip small dark color="green">
+										Complete
+									</v-chip>
+									<v-chip small>
+										Close
+									</v-chip>
+								</v-chip-group>
+							</v-col>
+							<v-col md="2" class="d-flex">
+								<v-spacer/>
+								<v-btn
+									@click="handelLoadData"
+									class="primary"
+									large
+									rounded>
+									<v-icon>
+										mdi-archive-search-outline
+									</v-icon>
+								</v-btn>
+							</v-col>
+						</v-row>
+						</v-container>
 					</v-card>
 				</v-col>
+
 				<v-col v-if="isFetching" sm="12" md="12" cols="12">
 					<v-card>
 						<v-skeleton-loader
@@ -103,14 +306,14 @@
 							type="article, table-heading"/>
 					</v-card>
 				</v-col>
+
 				<v-col v-else cols="12" md="12">
-					<v-card outlined>
+					<v-card>
 						<v-data-table
 							dense
 							:headers="table.header"
 							:items="table.data"
 							item-key="id"
-							@click:row="handelClickDetail"
 							disable-sort
 							:loading="isFetching"
 							:options.sync="options"
@@ -122,14 +325,23 @@
 							<template v-slot:[`item.gambar`]="{ item }">
 								<v-img :src="`${apiurl}/${item.gambar}`" max-width="31"/>
 							</template>
-							<template v-slot:[`item.ttd`]="{ item }">
-								<v-img :src="`${apiurl}${item.ttd}`" max-width="31"/>
+							<template v-slot:[`item.penarikan_alasan`]="{ item }">
+								{{ alasanPenarikan[item.penarikan_alasan] }}
 							</template>
-							<template v-slot:[`item.terakhir_masuk`]="{ item }">
-								{{ $moment(item.end_date).format('DD/MM/YYYY') }}
+							<template v-slot:[`item.penarikan_tanggal`]="{ item }">
+								{{ $moment(item.penarikan_tanggal).format('DD/MM/YYYY') }}
+							</template>
+							<template v-slot:[`item.kontrak_selesai`]="{ item }">
+								{{ $moment(item.kontrak_selesai).format('DD/MM/YYYY') }}
 							</template>
 							<template v-slot:[`item.tipe`]="{ item }">
 								<v-chip v-if="item.status" small class="success">{{ item.tipe}}</v-chip>
+							</template>
+							<template v-slot:[`item.action`]="{ item }">
+								
+								<v-btn @click="detail=item; dialogCetak=true" small primary dark color="primary" rounded>
+									Cetak
+								</v-btn>
 							</template>
 							<template v-slot:footer="{props}">
 								<my-dt-pagination
@@ -147,14 +359,20 @@
 <script>
 export default {
 	layout:'apps',
-	props: ['apps', 'handelKeluar' , 'apiurl'],
-	data: function(){
-        return {
-            filterNopol: '',
-            filterNotif: '',
-            filterNoCustomer: '',
-            filterNamaCustomer: '',
-            filterSelesaiKontrak: '',
+	props: [ 'apps', 'tipe', 'handelKeluar', 'setConfirmation', 'setFetching', 'setSnackbar' ],
+	async asyncData({ }) {
+		return {
+			dialogCetak: false,
+            detail: {},
+
+			isFetching:false,
+			uic:{},
+			form:{},
+			nopolMessage: '',
+            dialog: false,
+
+			filterCustomerNama: '',
+            filterNoPolisi: '',
             options: {page:1},
             isFetching: false,
             table:{
@@ -166,23 +384,28 @@ export default {
                         sortable: false,
                         value: 'no',
                     },
-					{ value: 'no_polisi', text: 'No Pol' },
-					{ value: 'tipe_kendaraan', text: 'Tipe' },
 					{ value: 'no_notif', text: 'No Notif' },
-					{ value: 'no_customer', text: 'No Cust' },
-					{ value: 'nama_customer', text: 'Nama Cust' },
-					{ value: 'no_kontrak', text: 'No Kontrak' },
-					{ value: 'mulai', text: 'Mulai' },
-					{ value: 'selesai', text: 'Selesai' },
+					{ value: 'customer_nama', text: 'Nama Customer' },
+					{ value: 'no_polisi', text: 'Nopol' },
+					{ value: 'pic_nama', text: 'PIC User' },
+					{ value: 'pic_telepon', text: 'PIC Telepon' },
+					{ value: 'kontrak_selesai', text: 'Kontrak Berakhir' },
+					{ value: 'penarikan_tanggal', text: 'Jadwal Penarikan' },
+					{ value: 'penarikan_alasan', text: 'Alasan Penarikan' },
 					{ value: 'bco', text: 'BCO' },
+					{ value: 'action', text: '' },
 
                 ],
                 data:[]
             },
-        }
-    },
-	mounted: function(){
+
+		}
+	},
+	data: () => ({
 		
+    }),
+	mounted: function(){
+		 
 	},
 	watch:{
         'options.page': function(){
@@ -192,40 +415,101 @@ export default {
             this.handelLoadData()
         },
     },
-	methods: {
-        handelLoadData: async function(){
+	methods:{
+
+		handelLoadData: async function(){
 
             this.isFetching     = true
 
             let query           = []
-            if(this.filterNopol){
-                query.push(`no_polisi:like.${this.filterNopol}`)
+            if(this.filterCustomerNama){
+                query.push(`customer_nama:like.${this.filterCustomerNama}`)
             }
-            if(this.filterNotif){
-				query.push(`no_notif:like.${this.filterNotif}`)
-            }
-			if(this.filterNoCustomer){
-                query.push(`no_customer:like.${this.filterNoCustomer}`)
-            }
-			if(this.filterNamaCustomer){
-                query.push(`nama_customer:like.${this.filterNamaCustomer}`)
-            }
-			if(this.filterSelesaiKontrak){
-                query.push(`selesai:date.${this.filterSelesaiKontrak}`)
+            if(this.filterNoPolisi){
+				query.push(`no_polisi:like.${this.filterNoPolisi}`)
             }
             if(query.length>0){
                 query           = `&query=${query.join(',')}`
             }
-            const data          = (await this.$api.$get(`v1/api/data/uic?page=${this.options.page-1}&size=${this.options.itemsPerPage}${query}`)).data
+            const data          = (await this.$api.$get(`v1/api/data/tiket?page=${this.options.page-1}&size=${this.options.itemsPerPage}${query}`)).data
             this.table.data     = data.content
             this.table.count    = eval(data.count)
             this.isFetching     = false
         },
-        handelClickDetail: function( item ){
-            // console.log(item)
-            // this.$router.push(`/content/${item.id}`);
-        }
-    }
+		
+		handelWarnaStatus: function(x){
+			let warna = "green"
+			if(x%2==0){
+				warna = "deep-purple lighten-1"
+			}
+			else if(x%3==0){
+				warna = "cyan accent-4"
+			}
+
+			return warna
+		},
+
+		handelCari: async function(){
+			this.nopolMessage		= ''
+
+			let query           	= []
+
+            query.push(`no_polisi:like.${this.uic.no_polisi}`)
+            
+            if(query.length>0){
+                query           	= `&query=${query.join(',')}`
+            }
+
+			const { content }		= (await this.$api.$get(`v1/api/data/uic?page=0&size=1${query}`)).data
+			
+
+			// const skpk 			= await this.$content('skpk').where({ nopol: this.form.nopol }).fetch()
+			if(content.length==0){
+				this.nopolMessage	= 'nopol tidak temukan'
+			}else{
+				this.uic					= content[0]
+				this.form.uic_id			= this.uic.id
+				this.form.no_notif			= this.uic.no_notif
+				this.form.customer_nama		= this.uic.nama_customer
+				this.form.no_polisi			= this.uic.no_polisi
+				this.form.kontrak_selesai	= this.uic.selesai
+				this.form.bco				= this.uic.bco
+			}
+			
+		},
+
+		handelConfirmation: function( item ){
+
+            this.setConfirmation({
+                status: true,
+                title: 'Continue',
+                message: `Are you sure you want to save this ticket ?`,
+                handelOk: async ()=>{
+                    this.setConfirmation({ status: false })
+
+                    this.setFetching(true)
+
+					this.form.terlambat	= this.form.terlambat_alasan?1:0
+
+                    let payload         = this.form
+
+                    this.$api.$post('/v1/api/tambah/tiket', payload).then((resp)=>{
+
+                        this.setFetching(false)
+                        if(resp.status){
+                            this.setSnackbar('data hasben saved')
+                            this.dialog	= false
+							this.handelLoadData()
+							this.form	= {}
+                        }else{
+                            this.setSnackbar(resp.message)
+                        }
+                    })
+                }
+            })
+        },
+
+	}
 }
 </script>
 <style>

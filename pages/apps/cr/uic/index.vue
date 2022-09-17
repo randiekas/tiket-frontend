@@ -75,6 +75,7 @@
 									<th>No. Notif</th>
 									<th>No. Customer</th>
 									<th>Nama Customer</th>
+									<th>AH</th>
 									<th>Nomor Kontrak</th>
 									<th>Mulai</th>
 									<th>Selesai</th>
@@ -91,6 +92,7 @@
 									<td>{{ item.no_notif }}</td>
 									<td>{{ item.no_customer }}</td>
 									<td>{{ item.nama_customer }}</td>
+									<td>{{ item.ah }}</td>
 									<td>{{ item.no_kontrak }}</td>
 									<td>{{ item.mulai }}</td>
 									<td>{{ item.selesai }}</td>
@@ -162,6 +164,7 @@ export default {
                 'no notif': 'no_notif',
                 'no customer': 'no_customer',
                 'nama customer': 'nama_customer',
+                'ah': 'ah',
                 'no kontrak': 'no_kontrak',
                 'mulai': 'mulai',
                 'selesai': 'selesai',

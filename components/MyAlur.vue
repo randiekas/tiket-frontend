@@ -1,47 +1,53 @@
 <template>
 <v-stepper alt-labels class="mb-8">
     <v-stepper-header>
-        <v-stepper-step step="1">
-            <v-btn to="/apps/sales" color="primary" small exact>
-                Data UIC
-            </v-btn>
-        </v-stepper-step>
+        <template
+            v-for="(item, index) in alur[tipe]">
 
-        <v-divider></v-divider>
-        <v-stepper-step step="2">
-            <v-btn to="/apps/sales/tiket" color="primary" small exact>
-                Data tiket
-            </v-btn>
+            <v-divider v-if="index"></v-divider>
+            <v-stepper-step :step="index+1">
+                
+                <v-btn 
+                    v-if="item.link"
+                    :to="item.link" 
+                    color="primary" 
+                    small 
+                    exact>
+                    {{ item.nama }}
+                </v-btn>
+                <div v-else>{{ item.nama }}</div>
+            </v-stepper-step>
 
-        </v-stepper-step>
+        </template>
 
-        <v-divider></v-divider>
-
-
-        <v-stepper-step step="3">
-            Approval BM
-        </v-stepper-step>
-
-        <v-divider></v-divider>
-        <v-stepper-step step="4">
-            Approval ADH
-        </v-stepper-step>
-
-        <v-divider></v-divider>
-        <v-stepper-step step="5">
-            Approval FDH
-        </v-stepper-step>
-
-        <v-divider></v-divider>
-        <v-stepper-step step="6">
-            Driver/PDI
-        </v-stepper-step>
-
-        <v-divider></v-divider>
-        <v-stepper-step step="7">
-            Verifikasi FS
-        </v-stepper-step>
-
+        
     </v-stepper-header>
     </v-stepper>
 </template>
+<script>
+export default {
+    props: [ 'tipe' ],
+    data: function(){
+        return {
+            alur:{
+                cr: [
+                    { nama: 'Data UIC', link: '/apps/cr' },
+                    { nama: 'Approval BM' },
+                    { nama: 'Approval ADH' },
+                    { nama: 'Approval FDH' },
+                    { nama: 'Driver/PDI' },
+                    { nama: 'Verifikasi FS' },
+                ],
+                sales: [
+                    { nama: 'Data Tiket', link: '/apps/sales' },
+                    { nama: 'Approval BM' },
+                    { nama: 'Approval ADH' },
+                    { nama: 'Approval FDH' },
+                    { nama: 'Driver/PDI' },
+                    { nama: 'Verifikasi FS' },
+                ]
+            }
+        }
+    }
+}
+</script>

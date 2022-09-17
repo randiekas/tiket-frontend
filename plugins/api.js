@@ -22,6 +22,7 @@ Vue.prototype.akunTipe		= [
 	{ value:'fleet', label: 'fleet' }, 
 	{ value:'driver', label: 'driver' }, 
 	{ value:'admin', label: 'admin' }, 
+	{ value:'cr', label: 'cr' }, 
 ]
 
 Vue.prototype.alasanPenarikan	= [

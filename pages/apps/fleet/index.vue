@@ -1,151 +1,6 @@
 <template>
 	<div class="grey lighten-4 fill-height mb-16">
-		<v-dialog
-            v-model="dialogCetak"
-            persistent
-            max-width="1024px"
-            >
-            <v-card>
-                <v-card-title>
-                	<span class="text-h5">Preview Cetak</span>
-					<v-spacer/>
-					<div>
-						<v-btn rounded small class="primary"><v-icon left>mdi-printer-outline</v-icon>CETAK</v-btn>
-						<v-btn rounded small @click="dialogCetak=false"><v-icon left>mdi-close</v-icon>TUTUP</v-btn>
-					</div>
-                </v-card-title>
-                <v-card-text>
-					<v-card outlined rounded="lg">
-					<v-card-text>
-					<h1 style="margin-bottom: 12px; text-align:center; display:flex; justify-content:space-between; align-items:center;">
-						<img src="/logo-trac.png" width="64px" style="margin-right: 8px;"/>
-						Surat Konfirmasi Penarikan Kendaraan dan Driver
-						<div></div>
-					</h1>
-					<p style="background-color: #d9d9d9;"><b>PT. SERASI AUTORAYA</b></p>
-					<table style="width:100%!important">
-						<tbody>
-							<tr>
-								<td colspan="3"><b>DI ISI OLEH TEAM SALES</b></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>NOMOR CUSTOMER (CMD)</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>NAMA CUSTOMER</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>PIC / USER</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>JABATAN / BAGIAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>NOMOR TELEPON / HP</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>ALAMAT PENARIKAN KENDARAAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>NOMOR KONTRAK</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>TANGGAL AKHIR KONTRAK</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>BILLING CONTROL OFFICER</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>NOMOR POLISI / NOMOR AKTIF</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>NAMA DRIVER / NOTIF</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td colspan="3"><b>JADWAL PENARIKAN</b></td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>TANGGAL PENARIKAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>WAKTU PENARIKAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>ALASAN PENARIKAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>ALASAN KETERLAMBATAN (dari customer)</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td colspan="3"><hr/></td>
-							</tr>
-							<tr>
-								<td colspan="3"><b>DI ISI TEAM POOL</b></td>
-							</tr>
-							<tr>
-								<td colspan="3"><b>AKTUAL PENARIKAN TEAM POOL</b></td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>TANGGAL PENARIKAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td class="px-1"></td>
-								<td>WAKTU PENARIKAN</td>
-								<td>: 2123232323</td>
-							</tr>
-							<tr>
-								<td colspan="3"><b>JAKARTA, 24 AGUSTUS 2021</b></td>
-							</tr>
-							<tr>
-								<td>
-									Pemohon
-								</td>
-								<td>
-									Menyetujui
-								</td>
-								<td>
-									Mengetahui
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					</v-card-text>
-					</v-card>
-				</v-card-text>
-			</v-card>
-		</v-dialog>
+		<my-cetak :detail="detail" :dialogCetak="dialogCetak"/>
 		<v-dialog
             v-model="dialog"
             persistent
@@ -511,7 +366,7 @@
 								<v-btn @click="dialog=true" small primary dark color="primary" rounded>
 									Detail
 								</v-btn>
-								<v-btn @click="dialogCetak=true" small primary dark color="primary" rounded>
+								<v-btn @click="detail=item; dialogCetak=true" small primary dark color="primary" rounded>
 									Cetak
 								</v-btn>
 							</template>
@@ -535,9 +390,9 @@ export default {
 	async asyncData({ }) {
 		return {
 			dialog: false,
-			dialogCetak: false,
 			isFetching:false,
-            
+			dialogCetak: false,
+            detail: {},
 			filterCustomerNama: '',
             filterNoPolisi: '',
             options: {page:1},
@@ -642,8 +497,3 @@ export default {
 	}
 }
 </script>
-<style>
-table{
-	width: 1470px!important;
-}
-</style>
