@@ -116,12 +116,12 @@
 							<tr>
 								<td class="px-1"></td>
 								<td>TANGGAL PENARIKAN</td>
-								<td>: 2123232323</td>
+								<td>: {{ detail.aktual_penarikan_tanggal }}</td>
 							</tr>
 							<tr>
 								<td class="px-1"></td>
 								<td>WAKTU PENARIKAN</td>
-								<td>: 2123232323</td>
+								<td>: {{detail.aktual_penarikan_waktu}}</td>
 							</tr>
 							<tr>
 								<td colspan="3"><b>JAKARTA, 24 AGUSTUS 2021</b></td>

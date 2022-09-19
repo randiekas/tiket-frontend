@@ -18,125 +18,153 @@
 						persistent-placeholder
 						outlined
 						dense
-						hint="Enter untuk mengambil data"
+						v-model="form.no_notif"
 						persistent-hint
                         />
 					<p class="mb-0">Nomor Polisi / Nomor Notif </p>
 					<v-radio-group
+						v-model="form.no_polisi"
 						class="mt-0">
 						<v-radio
-							label="B 154 IUX - Toyota Avanza"/>
-						<v-radio
-							label="B 1234 XYZ - Daihatsu Xenia"/>
+							:value="form.no_polisi"
+							:label="form.no_polisi"/>
 					</v-radio-group>
 					<v-text-field
-                        label="NOMOR KONTRAK "
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-						disabled
-                        />
-					<v-text-field
-                        label="Tanggal Akhir Kontrak "
-						type="date"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-						disabled
-						append-icon="mdi-calendar"
-                        />
+							v-model="form.customer_nama"
+							class="mt-2"
+							label="Nama Customer"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							persistent-hint
+							disabled
+							/>
+						<v-text-field
+							v-model="form.kontrak_no"
+							label="NOMOR KONTRAK "
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							disabled
+							/>
+						<v-text-field
+							v-model="form.kontrak_selesai"
+							label="Tanggal Akhir Kontrak "
+							type="date"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							disabled
+							append-icon="mdi-calendar"
+							/>
 
-                    <v-text-field
-                        label="PIC / User"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<v-text-field
+							v-model="form.pic_nama"
+							label="PIC / User"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
-					<v-text-field
-                        label="Jabatan / Bagian"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<v-text-field
+							v-model="form.pic_jabatan"
+							label="Jabatan / Bagian"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
-					<v-text-field
-						type="number"
-                        label="No Telepon / hp"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<v-text-field
+							v-model="form.pic_telepon"
+							type="number"
+							label="No Telepon / hp"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
-					<v-text-field
-                        label="Alamat penarikan kendaraan"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<p class="mb-0">Status Penarikan</p>
+						<v-radio-group 
+							v-model="form.penarikan_status"
+							class="mt-0">
+							<v-radio
+								value="0"
+								label="Unit diambil"/>
+							<v-radio
+								value="1"
+								label="Customer antar ke pool"/>
+						</v-radio-group>
 
-					<p>Jadwal Penarikan</p>
-					<v-text-field
-                        label="Tanggal Penarikan"
-						type="date"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
-					<v-text-field
-                        label="Waktu Penarikan"
-						type="time"
-                        required
-						persistent-placeholder
-						outlined
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<v-text-field
+							v-model="form.penarikan_alamat"
+							label="Alamat penarikan/serahterima kendaraan"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
-					<p class="mb-0">Alasan Penarikan</p>
-					<v-radio-group class="mt-0">
-						<v-radio
-							label="Kontrak selesai"/>
-						<v-radio
-							label="AR Bermasalah"/>
-						<v-radio
-							label="Early Termination"/>
-						<v-radio
-							label="Pass Maintenance Check"/>
-						<v-radio
-							label="Late unit return"/>
-						<v-radio
-							label="GT"/>
-					</v-radio-group>
-					<v-text-field
-                        label="Lain-lain"
-                        required
-						persistent-placeholder
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<p>Jadwal Penarikan</p>
+						<v-text-field
+							v-model="form.penarikan_tanggal"
+							label="Tanggal penarikan/serahterima kendaraan"
+							type="date"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
+						<v-text-field
+							v-model="form.penarikan_waktu"
+							label="Waktu penarikan/serahterima kendaraan"
+							type="time"
+							required
+							persistent-placeholder
+							outlined
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
-                    <v-text-field
-                        label="Alasan Keterlambatan"
-                        required
-						persistent-placeholder
-						dense
-						placeholder="Tulis disini ..."
-                        />
+						<p class="mb-0">Alasan Penarikan</p>
+						<v-radio-group 
+							v-model="form.penarikan_alasan"
+							class="mt-0">
+							<v-radio
+								v-for="(item, index) in alasanPenarikan"
+								:key="index"
+								:value="index.toString()"
+								:label="item"/>
+						</v-radio-group>
+						<v-text-field
+							v-model="form.lain_lain"
+							label="Lain-lain"
+							required
+							persistent-placeholder
+							dense
+							placeholder="Tulis disini ..."
+							/>
+
+						<v-text-field
+							v-model="form.terlambat_alasan"
+							label="Alasan Keterlambatan"
+							required
+							persistent-placeholder
+							dense
+							placeholder="Tulis disini ..."
+							/>
 
                     <p>Actual penarikan/Serah Terima</p>
                     <v-text-field
@@ -147,6 +175,7 @@
 						outlined
 						dense
 						placeholder="Tulis disini ..."
+						v-model="form.aktual_notif_back_sewa"
                         />
 					<v-text-field
                         label="Nama Driver/PDI"
@@ -155,6 +184,7 @@
 						outlined
 						dense
 						placeholder="Tulis disini ..."
+						v-model="form.aktual_driver_nama"
                         />
 					<v-text-field
                         label="Nomor WhatsApp Driver/PDI"
@@ -164,6 +194,7 @@
 						dense
 						placeholder="Tulis disini ..."
 						type="number"
+						v-model="form.aktual_driver_telepon"
                         />
 					<v-text-field
                         label="Tanggal Penarikan/Serah Terima"
@@ -173,6 +204,7 @@
 						outlined
 						dense
 						placeholder="Tulis disini ..."
+						v-model="form.aktual_penarikan_tanggal"
                         />
 					<v-text-field
                         label="Waktu Penarikan/Serah Terima"
@@ -182,6 +214,7 @@
 						outlined
 						dense
 						placeholder="Tulis disini ..."
+						v-model="form.aktual_penarikan_waktu"
                         />
                 </v-container>
                 <small>*indicates required field</small>
@@ -198,7 +231,7 @@
                 <v-btn
                     color="blue darken-1"
                     text
-                    @click="dialog = false"
+                    @click="handelConfirmation"
                 >
                     Submit
                 </v-btn>
@@ -363,7 +396,7 @@
 								<v-chip v-if="item.status" small class="success">{{ item.tipe}}</v-chip>
 							</template>
 							<template v-slot:[`item.action`]="{ item }">
-								<v-btn @click="dialog=true" small primary dark color="primary" rounded>
+								<v-btn @click="form=item;dialog=true" small primary dark color="primary" rounded>
 									Detail
 								</v-btn>
 								<v-btn @click="detail=item; dialogCetak=true" small primary dark color="primary" rounded>
@@ -420,6 +453,7 @@ export default {
                 ],
                 data:[]
             },
+			form: {}
 
 		}
 	},
@@ -476,15 +510,13 @@ export default {
 
                     this.setFetching(true)
 
-					const payload      	= {
-						approval_fdh: 1,
-					}
+					const payload      	= this.form
 
-                    this.$api.$post('/v1/api/ubah/tiket/'+item.id, payload).then((resp)=>{
+                    this.$api.$post('/v1/api/ubah/tiket/'+payload.id, payload).then((resp)=>{
 
                         this.setFetching(false)
                         if(resp.status){
-                            this.setSnackbar('Tikett berhasil di approve')
+                            this.setSnackbar('Tiket berhasil di ubah')
 							this.handelLoadData()
                         }else{
                             this.setSnackbar(resp.message)
