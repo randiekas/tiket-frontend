@@ -15,11 +15,23 @@
             <v-card-text id="section-to-print">
                 <v-card outlined rounded="lg">
                 <v-card-text>
-                <h2 style="margin-bottom: 12px; text-align:center; display:flex; justify-content:space-between; align-items:center;">
-                    <img src="/logo-trac.png" width="64px" style="margin-right: 8px;"/>
-                    Surat Konfirmasi Penarikan Kendaraan dan Driver
-                    <div></div>
-                </h2>
+					<div style="display:flex; justify-content:space-between; align-items:center;">
+						<img src="/logo-trac.png" width="64px" style="margin-right: 8px;"/>
+						<h2 style="margin-bottom: 12px; text-align:center; width:100%">
+							Surat Konfirmasi Penarikan Kendaraan dan Driver
+						</h2>
+						<table style="width:250px!important;border-spacing: 0; font-size: small;" border="1">
+							<tbody>
+								<tr>
+									<td colspan="2" style="padding:1px" align="center">TRAC-DOC-60-90-01</td>
+								</tr>
+								<tr>
+									<td style="padding:1px" align="center">Rev.01</td>
+									<td style="padding:1px" align="center">Date.17.06.2019</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
                 <p style="background-color: #d9d9d9;"><b>PT. SERASI AUTORAYA</b></p>
                 <table style="width:100%!important; border-spacing: initial;">
                     <tbody>
@@ -218,21 +230,19 @@
 							</tr>
 							<tr>
 								<td align="center" width="25%">
-									Renaldus Robert
-									<hr/>
-									ACCOUNT HEAD
+									
 								</td>
 								<td align="center" width="25%">
 									Aryo Abimantrana<hr/>
-									ADH
+									Fleet Head
 								</td>
 								<td align="center" width="25%">
 									Sukandi <hr/>
-									BM
+									ADH
 								</td>
 								<td align="center" width="25%">
 									Agus Widodo <hr/>
-									Fleet Head
+									BM
 								</td>
 							</tr>
 						</tbody>
